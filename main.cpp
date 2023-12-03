@@ -2,9 +2,13 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <windows.h>
+#include <mmsystem.h>
 #include<cstdio>
 #include <math.h>
 #define PI 3.1416
+
+
+
 
 // Player position
 float playerX = -18.0f;
@@ -131,7 +135,10 @@ glClear(GL_COLOR_BUFFER_BIT);
 
 }
 
-
+// Play gun shoot sound
+void gunShotSound(){
+    sndPlaySound("gun_shoot_sound.wav", SND_ASYNC);
+}
 
 
 void update(int value) {
@@ -178,6 +185,7 @@ void handleKeypress(unsigned char key, int x, int y) {
             break;
         case 's':
             if (!isBulletActive) {
+                gunShotSound();
                 bulletX = playerX;
                 bulletY = playerY;
                 isBulletActive = true;
@@ -195,7 +203,6 @@ int main(int argc, char** argv) {
     glutDisplayFunc(display);
     glutKeyboardFunc(handleKeypress);
     glutTimerFunc(25, update, 0);  // Timer function for game updates
-
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     gluOrtho2D(-20.0, 20.0, -20.0, 20.0);
 
