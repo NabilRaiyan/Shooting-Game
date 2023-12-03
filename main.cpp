@@ -1,6 +1,10 @@
 #include <iostream>
 #include <GL/glut.h>
+#include <GL/gl.h>
 #include <windows.h>
+#include<cstdio>
+#include <math.h>
+#define PI 3.1416
 
 // Player position
 float playerX = -18.0f;
@@ -11,6 +15,7 @@ float bulletX = 1.0f;
 float bulletY = 1.0f;
 bool isBulletActive = false;
 bool isPlayerMoving = true;
+
 
 void drawPlayer() {
     // Code to draw the player (e.g., a rectangle or sprite)
@@ -34,6 +39,101 @@ void drawBullet() {
     glEnd();
 }
 
+// Draw background view
+
+
+void background(){
+glClear(GL_COLOR_BUFFER_BIT);
+    glLineWidth(0.5);
+
+    //background
+    glBegin(GL_POLYGON);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glVertex2f(-20.0f,20.0f);
+    glVertex2f(20.0f,20.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+    //door 1
+    glBegin(GL_POLYGON);
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex2f(-18.0f,14.0f);
+    glVertex2f(-9.0f,14.0f);
+    glVertex2f(-9.0f,-8.0f);
+    glVertex2f(-18.0f,-8.0f);
+    glEnd();
+//door 1 glass
+    glBegin(GL_POLYGON);
+    glColor3f(0.f, 0.0f, 1.0f);
+    glVertex2f(-12.0f,11.0f);
+    glVertex2f(-9.0f,11.0f);
+    glVertex2f(-9.0f,5.0f);
+    glVertex2f(-12.0f,5.0f);
+    glEnd();
+
+    //door 2
+    glBegin(GL_POLYGON);
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex2f(5.0f,14.0f);
+    glVertex2f(16.0f,14.0f);
+    glVertex2f(16.0f,-8.0f);
+    glVertex2f(5.0f,-8.0f);
+    glEnd();
+    //door2 glass
+    glBegin(GL_POLYGON);
+    glColor3f(0.f, 0.0f, 1.0f);
+    glVertex2f(13.0f,11.0f);
+    glVertex2f(16.0f,11.0f);
+    glVertex2f(16.0f,5.0f);
+    glVertex2f(13.0f,5.0f);
+    glEnd();
+
+
+
+     //dustbin trinagle
+    glBegin(GL_POLYGON);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex2f(-5.0f,0.0f);
+    glVertex2f(-3.0f,2.0f);
+    glVertex2f(-1.0f,2.0f);
+    glVertex2f(1.0f,0.0f);
+    glEnd();
+ //dustbin big rectangle
+    glBegin(GL_POLYGON);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex2f(-5.0f,0.0f);
+    glVertex2f(1.0f,0.0f);
+    glVertex2f(1.0f,-8.0f);
+    glVertex2f(-5.0f,-8.0f);
+    glEnd();
+
+//dustbin midlle rectangle
+
+      glBegin(GL_POLYGON);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glVertex2f(-4.0f,-2.0f);
+    glVertex2f(0.0f,-2.0f);
+    glVertex2f(0.0f,-4.0f);
+    glVertex2f(-4.0f,-4.0f);
+    glEnd();
+
+
+    //floor
+        glBegin(GL_POLYGON);
+    glColor3f(0.1f, 0.1f, 0.1f);
+    glVertex2f(-20.0f,-10.0f);
+    glVertex2f(20.0f,-10.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+
+}
+
+
+
+
 void update(int value) {
     // Update the bullet position if it is active
     if (isBulletActive) {
@@ -49,13 +149,16 @@ void update(int value) {
 }
 
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT);
 
+    glClear(GL_COLOR_BUFFER_BIT);
+    background();
     drawPlayer();
 
     if (isBulletActive) {
         drawBullet();
     }
+
+
 
     glutSwapBuffers();
 }
