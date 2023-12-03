@@ -1,9 +1,10 @@
 #include <iostream>
 #include <GL/glut.h>
+#include <windows.h>
 
 // Player position
 float playerX = -18.0f;
-float playerY = -15.0f;
+float playerY = -12.0f;
 
 // Bullet position
 float bulletX = 1.0f;
@@ -15,21 +16,21 @@ void drawPlayer() {
     // Code to draw the player (e.g., a rectangle or sprite)
     glColor3f(1.0f, 0.5f, 0.0f);
     glBegin(GL_QUADS);
-    glVertex2f(playerX - 1.0f, playerY - 1.0f);
-    glVertex2f(playerX + 1.0f, playerY - 1.0f);
-    glVertex2f(playerX + 1.0f, playerY + 1.0f);
-    glVertex2f(playerX - 1.0f, playerY + 1.0f);
+    glVertex2f(playerX - 1.0f, playerY - 5.0f);
+    glVertex2f(playerX + 1.0f, playerY - 5.0f);
+    glVertex2f(playerX + 1.0f, playerY + 3.0f);
+    glVertex2f(playerX - 1.0f, playerY + 3.0f);
     glEnd();
 }
 
 void drawBullet() {
     // Code to draw the bullet in red and slightly larger
-    glColor3f(1.0f, 0.0f, 0.0f);  // Red color
+    glColor3f(1.0f, 1.0f, 0.0f);  // Red color
     glBegin(GL_QUADS);
-    glVertex2f(bulletX - 0.1f, bulletY - 0.1f);
-    glVertex2f(bulletX + 0.1f, bulletY - 0.1f);
-    glVertex2f(bulletX + 0.1f, bulletY + 0.1f);
-    glVertex2f(bulletX - 0.1f, bulletY + 0.1f);
+    glVertex2f(bulletX - 0.2f, bulletY - 0.2f);
+    glVertex2f(bulletX + 0.2f, bulletY - 0.2f);
+    glVertex2f(bulletX + 0.2f, bulletY + 0.2f);
+    glVertex2f(bulletX - 0.2f, bulletY + 0.2f);
     glEnd();
 }
 
