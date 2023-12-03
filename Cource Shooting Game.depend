@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1701583279 source:e:\courses\aiub courses\9th semester\computer graphics\resources\final term\course shooting game\cource shooting game\main.cpp
+1701618775 source:e:\courses\aiub courses\9th semester\computer graphics\resources\final term\course shooting game\cource shooting game\main.cpp
 	<iostream>
 	<GL/glut.h>
 	<GL/gl.h>
 	<windows.h>
-	<cstdio>
+	<mmsystem.h>
 	<math.h>
 
 1426328128 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\glut.h

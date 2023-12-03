@@ -3,23 +3,58 @@
 #include <GL/gl.h>
 #include <windows.h>
 #include <mmsystem.h>
-#include<cstdio>
 #include <math.h>
 #define PI 3.1416
-
-
 
 
 // Player position
 float playerX = -18.0f;
 float playerY = -12.0f;
 
+
+float enemyX = 18.3f;
+float enemyY = -12.0f;
+
+
 // Bullet position
 float bulletX = 1.0f;
 float bulletY = 1.0f;
+
 bool isBulletActive = false;
 bool isPlayerMoving = true;
 
+bool isCollide = false;
+int score = 0;
+
+void checkCollision(){
+    if (bulletX >= enemyX && bulletX <= enemyX + 0.3f){
+        std::cout << "Collision detected!" << std::endl;
+        isCollide = true;
+        if (isCollide){
+
+            score += 1;
+
+            std::cout << "Score: " << score << std::endl;
+            isCollide = false;
+        }
+    }
+
+
+}
+
+
+void drawEnemy(){
+    glBegin(GL_POLYGON);
+    glColor3f(0.f, 0.0f, 1.0f);
+    glVertex2f(enemyX + 1.0f,enemyY - 4.0f);
+    glVertex2f(enemyX - 1.0f,enemyY - 4.0f);
+    glVertex2f(enemyX - 1.0f,enemyY + 1.0f);
+    glVertex2f(enemyX + 1.0f, enemyY + 1.0f);
+    glEnd();
+
+    glEnd();
+
+}
 
 void drawPlayer() {
     // Code to draw the player (e.g., a rectangle or sprite)
@@ -43,11 +78,12 @@ void drawBullet() {
     glEnd();
 }
 
+
+
+
 // Draw background view
-
-
 void background(){
-glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
     //background
@@ -67,7 +103,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(-9.0f,-8.0f);
     glVertex2f(-18.0f,-8.0f);
     glEnd();
-//door 1 glass
+    //door 1 glass
     glBegin(GL_POLYGON);
     glColor3f(0.f, 0.0f, 1.0f);
     glVertex2f(-12.0f,11.0f);
@@ -103,7 +139,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(-1.0f,2.0f);
     glVertex2f(1.0f,0.0f);
     glEnd();
- //dustbin big rectangle
+    //dustbin big rectangle
     glBegin(GL_POLYGON);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex2f(-5.0f,0.0f);
@@ -112,9 +148,9 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(-5.0f,-8.0f);
     glEnd();
 
-//dustbin midlle rectangle
+    //dustbin midlle rectangle
 
-      glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3f(0.0f, 0.0f, 0.0f);
     glVertex2f(-4.0f,-2.0f);
     glVertex2f(0.0f,-2.0f);
@@ -124,7 +160,7 @@ glClear(GL_COLOR_BUFFER_BIT);
 
 
     //floor
-        glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3f(0.1f, 0.1f, 0.1f);
     glVertex2f(-20.0f,-10.0f);
     glVertex2f(20.0f,-10.0f);
@@ -144,28 +180,29 @@ void gunShotSound(){
 void update(int value) {
     // Update the bullet position if it is active
     if (isBulletActive) {
-        bulletX += 0.6f;  // Adjust the speed of the bullet
+        bulletX += 0.5f;  // Adjust the speed of the bullet
         // Check if the bullet is out of bounds
+//        std::cout <<  "Bullet possition" << std::endl;
+//        std::cout <<  bulletX << std::endl;
         if (bulletX > 20.0f) {
             isBulletActive = false;
         }
     }
-
     glutPostRedisplay();
     glutTimerFunc(10, update, 0);  // 60 FPS
 }
 
 void display() {
-
     glClear(GL_COLOR_BUFFER_BIT);
     background();
+    drawEnemy();
     drawPlayer();
+    checkCollision();
+
 
     if (isBulletActive) {
         drawBullet();
     }
-
-
 
     glutSwapBuffers();
 }
