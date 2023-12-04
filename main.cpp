@@ -7,6 +7,7 @@
 #include <cstdlib>
 #define PI 3.1416
 
+
 float playerX = -18.0f;
 float playerY = -12.0f;
 
@@ -298,10 +299,8 @@ void background2(){
     glEnd();
 
     //finger print1 position
-
-
-       glBegin(GL_POLYGON);
-     glColor3ub(9, 230, 212);
+    glBegin(GL_POLYGON);
+    glColor3ub(9, 230, 212);
     glVertex2f(-7.62f,3.00f);
     glVertex2f(-7.33f,3.00f);
     glVertex2f(-7.33f,2.50f);
@@ -315,20 +314,20 @@ void background2(){
     glVertex2f(4.0f,-2.0f);
     glVertex2f(18.0f,-2.0f);
     glVertex2f(17.0f,-7.0f);
-
     glEnd();
-//bench midle rect
+
+    //bench midle rect
     glBegin(GL_POLYGON);
-   glColor3ub(60, 113, 166);
+    glColor3ub(60, 113, 166);
     glVertex2f(4.0f,-7.0f);
     glVertex2f(18.0f,-7.0f);
     glVertex2f(18.0f,-8.0f);
     glVertex2f(4.0f,-8.0f);
     glEnd();
 
-//rect bench
-       glBegin(GL_POLYGON);
-     glColor3ub(96, 133, 158);
+    //rect bench
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
     glVertex2f(4.00f,-7.00f);
     glVertex2f(18.00f,-7.00f);
     glVertex2f(18.00f,-8.00f);
@@ -338,41 +337,44 @@ void background2(){
 
 
    //1legbench
-          glBegin(GL_POLYGON);
-     glColor3ub(96, 133, 158);
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
     glVertex2f(4.00f,-8.00f);
     glVertex2f(5.00f,-8.00f);
     glVertex2f(6.00f,-11.00f);
     glVertex2f(5.00f,-11.00f);
     glEnd();
+
     //2leg
-        glBegin(GL_POLYGON);
-     glColor3ub(96, 133, 158);
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
     glVertex2f(6.00f,-8.00f);
     glVertex2f(6.75f,-8.00f);
     glVertex2f(7.25f,-11.00f);
     glVertex2f(6.50f,-11.00f);
     glEnd();
-    //3rdleg
 
-        glBegin(GL_POLYGON);
-     glColor3ub(96, 133, 158);
+    //3rdleg
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
     glVertex2f(15.25f,-8.00f);
     glVertex2f(16.00f,-8.00f);
     glVertex2f(15.5f,-11.00f);
     glVertex2f(14.75f,-11.00f);
     glEnd();
+
     //4th leg
-       glBegin(GL_POLYGON);
-     glColor3ub(96, 133, 158);
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
     glVertex2f(17.0f,-8.00f);
     glVertex2f(18.00f,-8.00f);
     glVertex2f(17.25f,-11.00f);
     glVertex2f(16.25f,-11.00f);
     glEnd();
+
     //fire box
-     glBegin(GL_POLYGON);
-     glColor3ub(219, 15, 36);
+    glBegin(GL_POLYGON);
+    glColor3ub(219, 15, 36);
     glVertex2f(9.0f,6.00f);
     glVertex2f(12.00f,6.00f);
     glVertex2f(12.00f,3.00f);
@@ -380,8 +382,8 @@ void background2(){
     glEnd();
 
     //fireboxsmall
-       glBegin(GL_POLYGON);
-     glColor3ub(47, 62, 66);
+    glBegin(GL_POLYGON);
+    glColor3ub(47, 62, 66);
     glVertex2f(10.0f,5.00f);
     glVertex2f(11.00f,5.00f);
     glVertex2f(11.00f,4.00f);
@@ -393,6 +395,7 @@ void background2(){
     glVertex2f(4.50f,-4.00f);
     glVertex2f(17.50f,-4.00f);
     glEnd();
+
     //line
     glBegin(GL_LINES);
     glColor3ub(23, 21, 21);
@@ -411,12 +414,16 @@ void background2(){
 
     //floor
     glBegin(GL_POLYGON);
-   glColor3ub(47, 62, 66);
+    glColor3ub(47, 62, 66);
     glVertex2f(-20.0f,-10.0f);
     glVertex2f(20.0f,-10.0f);
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
+
+}
+
+void background3(){
 
 }
 
