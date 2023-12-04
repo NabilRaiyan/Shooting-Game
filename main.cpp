@@ -1,90 +1,79 @@
 #include <iostream>
 #include <GL/glut.h>
-#include <GL/gl.h>
 #include <windows.h>
 #include <mmsystem.h>
-#include <math.h>
-#define PI 3.1416
 #include <vector>
+#include <ctime>
+#include <cstdlib>
 
+#define PI 3.1416
 
-// Player position
 float playerX = -18.0f;
 float playerY = -12.0f;
 
-
-float enemyX = 18.3f;
-float enemyY = -12.0f;
-
-
-// Bullet position
 float bulletX = 1.0f;
 float bulletY = 1.0f;
 
 bool isBulletActive = false;
 bool isPlayerMoving = true;
 
-bool isCollide = false;
 int score = 0;
 
+const int numEnemies = 5;  // Adjust the number of enemies as needed
+std::vector<float> enemyX(numEnemies, 0.0f);
+std::vector<float> enemyY(numEnemies, 0.0f);
 
-void renderBitmapString(float x, float y, float z, void *font, char *string)
-{
-     glColor3f(1.0,1.0,1.0);
-    char *c;
-    glRasterPos3f(x, y,z);
-    for (c=string; *c != '\0'; c++)
-    {
+void renderBitmapString(float x, float y, float z, void* font, char* string) {
+    glColor3f(1.0, 1.0, 1.0);
+    char* c;
+    glRasterPos3f(x, y, z);
+    for (c = string; *c != '\0'; c++) {
         glutBitmapCharacter(font, *c);
     }
 }
 
-// Checking collision of bullet with enemy
-void checkCollision(){
-    if (bulletX >= enemyX && bulletX <= enemyX + 0.3f){
-        std::cout << "Collision detected!" << std::endl;
-        isCollide = true;
-        if (isCollide){
-
+void checkCollision() {
+    for (int i = 0; i < numEnemies; ++i) {
+        if (isBulletActive && bulletX >= enemyX[i] - 1.0f && bulletX <= enemyX[i] + 1.0f && bulletY >= enemyY[i] - 4.0f && bulletY <= enemyY[i] + 1.0f) {
+            std::cout << "Collision detected!" << std::endl;
             score += 1;
-
             std::cout << "Score: " << score << std::endl;
-            isCollide = false;
+            isBulletActive = false;
+
+             // Regenerate enemy at initial position
+            enemyX[i] = 20.0f;
+            enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
         }
     }
-
-
 }
 
-
-//void drawEnemy(){
-//    glBegin(GL_POLYGON);
-//    glColor3f(0.f, 0.0f, 1.0f);
-//    glVertex2f(enemyX + 1.0f,enemyY - 4.0f);
-//    glVertex2f(enemyX - 1.0f,enemyY - 4.0f);
-//    glVertex2f(enemyX - 1.0f,enemyY + 1.0f);
-//    glVertex2f(enemyX + 1.0f, enemyY + 1.0f);
-//    glEnd();
-//
-//    glEnd();
-//
-//}
-
+void drawEnemy() {
+    for (int i = 0; i < numEnemies; ++i) {
+        if (enemyX[i] > -20.0f) {
+            glBegin(GL_POLYGON);
+            glColor3f(0.f, 0.0f, 1.0f);
+            glVertex2f(enemyX[i] + 1.0f, enemyY[i] - 4.0f);
+            glVertex2f(enemyX[i] - 1.0f, enemyY[i] - 4.0f);
+            glVertex2f(enemyX[i] - 1.0f, enemyY[i] + 1.0f);
+            glVertex2f(enemyX[i] + 1.0f, enemyY[i] + 1.0f);
+            glEnd();
+        }
+    }
+}
 
 void drawBullet() {
-    // Code to draw the bullet in red and slightly larger
-    glColor3f(1.0f, 1.0f, 0.0f);  // Red color
-    glBegin(GL_QUADS);
-    glVertex2f(bulletX - 0.2f, bulletY - 0.2f);
-    glVertex2f(bulletX + 0.2f, bulletY - 0.2f);
-    glVertex2f(bulletX + 0.2f, bulletY + 0.2f);
-    glVertex2f(bulletX - 0.2f, bulletY + 0.2f);
-    glEnd();
+    if (isBulletActive) {
+        glColor3f(1.0f, 1.0f, 0.0f);
+        glBegin(GL_QUADS);
+        glVertex2f(bulletX - 0.2f, bulletY - 0.2f);
+        glVertex2f(bulletX + 0.2f, bulletY - 0.2f);
+        glVertex2f(bulletX + 0.2f, bulletY + 0.2f);
+        glVertex2f(bulletX - 0.2f, bulletY + 0.2f);
+        glEnd();
+    }
 }
 
-
 void drawPlayer() {
-    // Code to draw the player (e.g., a rectangle or sprite)
     glColor3f(1.0f, 0.5f, 0.0f);
     glBegin(GL_QUADS);
     glVertex2f(playerX - 1.0f, playerY - 5.0f);
@@ -94,11 +83,8 @@ void drawPlayer() {
     glEnd();
 }
 
-
-
-// Draw background view
-void background(){
-glClear(GL_COLOR_BUFFER_BIT);
+void background() {
+    glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
     //background
@@ -247,26 +233,30 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
-
 }
 
-// Play gun shoot sound
-void gunShotSound(){
+void gunShotSound() {
     sndPlaySound("gun_shoot_sound.wav", SND_ASYNC);
 }
 
-
 void update(int value) {
-    // Update the bullet position if it is active
+
     if (isBulletActive) {
-        bulletX += 0.5f;  // Adjust the speed of the bullet
-        // Check if the bullet is out of bounds
-//        std::cout <<  "Bullet possition" << std::endl;
-//        std::cout <<  bulletX << std::endl;
+        bulletX += 0.5f;
         if (bulletX > 20.0f) {
             isBulletActive = false;
         }
     }
+
+    for (int i = 0; i < numEnemies; ++i) {
+        enemyX[i] -= 0.1f;
+        if (enemyX[i] < -20.0f) {
+            enemyX[i] = 20.0f;
+            enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+        }
+    }
+
+    checkCollision();
     glutPostRedisplay();
     glutTimerFunc(5, update, 0);
 }
@@ -274,43 +264,45 @@ void update(int value) {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     background();
+
+    // Draw player, bullet, and enemies
     drawPlayer();
-    checkCollision();
-//    drawEnemy();
+    drawBullet();
+    drawEnemy();
 
-
+    // Render text and other UI elements
     renderBitmapString(-1.5f, 8.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "Notice Board");
-    renderBitmapString(-1.5f, 6.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "Cancel Final Term");
-
-    if (isBulletActive) {
-        drawBullet();
+    glRasterPos2f(-1.5f, 6.0f);
+    std::string scoreText = "Score: " + std::to_string(score);
+    for (char c : scoreText) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
     }
 
     glutSwapBuffers();
-
 }
 
 void handleKeypress(unsigned char key, int x, int y) {
     switch (key) {
-        case 'a':
-            if (playerX < -18){
-                isPlayerMoving = false;
-            }
-            else{
-                playerX -= 0.5f;  // Move left
-            }
-            break;
-        case 'd':
-            playerX += 0.5f;  // Move right
-            break;
-        case 's':
-            if (!isBulletActive) {
-                gunShotSound();
-                bulletX = playerX;
-                bulletY = playerY;
-                isBulletActive = true;
-            }
-            break;
+    case 'a':
+        if (playerX < -18) {
+            isPlayerMoving = false;
+        }
+        else {
+            playerX -= 0.5f;
+        }
+        break;
+    case 'd':
+        playerX += 0.5f;
+        break;
+    case 's':
+        if (!isBulletActive) {
+            // Fire bullet
+            bulletX = playerX;
+            bulletY = playerY;
+            isBulletActive = true;
+            gunShotSound();
+        }
+        break;
     }
     glutPostRedisplay();
 }
@@ -322,9 +314,12 @@ int main(int argc, char** argv) {
     glutCreateWindow("Course Shooting Game");
     glutDisplayFunc(display);
     glutKeyboardFunc(handleKeypress);
-    glutTimerFunc(25, update, 0);  // Timer function for game updates
+    glutTimerFunc(25, update, 0);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     gluOrtho2D(-20.0, 20.0, -20.0, 20.0);
+
+    // Seed for random number generation
+    srand(static_cast<unsigned int>(time(nullptr)));
 
     glutMainLoop();
     return 0;
