@@ -5,6 +5,7 @@
 #include <mmsystem.h>
 #include <math.h>
 #define PI 3.1416
+#include <vector>
 
 
 // Player position
@@ -25,6 +26,7 @@ bool isPlayerMoving = true;
 
 bool isCollide = false;
 int score = 0;
+
 
 void renderBitmapString(float x, float y, float z, void *font, char *string)
 {
@@ -55,19 +57,18 @@ void checkCollision(){
 }
 
 
-void drawEnemy(){
-    glBegin(GL_POLYGON);
-    glColor3f(0.f, 0.0f, 1.0f);
-    glVertex2f(enemyX + 1.0f,enemyY - 4.0f);
-    glVertex2f(enemyX - 1.0f,enemyY - 4.0f);
-    glVertex2f(enemyX - 1.0f,enemyY + 1.0f);
-    glVertex2f(enemyX + 1.0f, enemyY + 1.0f);
-    glEnd();
-
-    glEnd();
-
-}
-
+//void drawEnemy(){
+//    glBegin(GL_POLYGON);
+//    glColor3f(0.f, 0.0f, 1.0f);
+//    glVertex2f(enemyX + 1.0f,enemyY - 4.0f);
+//    glVertex2f(enemyX - 1.0f,enemyY - 4.0f);
+//    glVertex2f(enemyX - 1.0f,enemyY + 1.0f);
+//    glVertex2f(enemyX + 1.0f, enemyY + 1.0f);
+//    glEnd();
+//
+//    glEnd();
+//
+//}
 
 
 void drawBullet() {
@@ -239,8 +240,8 @@ glClear(GL_COLOR_BUFFER_BIT);
 
 
     //floor
-        glBegin(GL_POLYGON);
-   glColor3ub(47, 62, 66);
+    glBegin(GL_POLYGON);
+    glColor3ub(47, 62, 66);
     glVertex2f(-20.0f,-10.0f);
     glVertex2f(20.0f,-10.0f);
     glVertex2f(20.0f,-20.0f);
@@ -273,9 +274,9 @@ void update(int value) {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     background();
-    drawEnemy();
     drawPlayer();
     checkCollision();
+//    drawEnemy();
 
 
     renderBitmapString(-1.5f, 8.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "Notice Board");
