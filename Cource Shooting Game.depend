@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1701690896 source:e:\courses\aiub courses\9th semester\computer graphics\resources\final term\course shooting game\cource shooting game\main.cpp
+1701694988 source:e:\courses\aiub courses\9th semester\computer graphics\resources\final term\course shooting game\cource shooting game\main.cpp
 	<iostream>
 	<GL/glut.h>
 	<windows.h>

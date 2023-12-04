@@ -8,6 +8,181 @@
 #define PI 3.1416
 
 
+
+// Creating level 3 background
+void background3() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLineWidth(0.5);
+
+
+
+    glBegin(GL_POLYGON);
+    glColor3ub(248, 218, 168);
+    glVertex2f(-20.0f,20.0f);
+    glVertex2f(20.0f,20.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+    //door 1
+    glBegin(GL_POLYGON);
+    glColor3ub(184, 120, 93);
+    glVertex2f(-15.0f,14.0f);
+    glVertex2f(-9.0f,14.0f);
+    glVertex2f(-9.0f,-10.0f);
+    glVertex2f(-15.0f,-10.0f);
+    glEnd();
+    //door 1 glass
+    glBegin(GL_POLYGON);
+    glColor3ub(158, 216, 236);
+    glVertex2f(-11.0f,11.0f);
+    glVertex2f(-9.0f,11.0f);
+    glVertex2f(-9.0f,5.0f);
+    glVertex2f(-11.0f,5.0f);
+    glEnd();
+
+    //fingerprint
+    glBegin(GL_POLYGON);
+    glColor3ub(37, 48, 47);
+    glVertex2f(-8.0f,5.0f);
+    glVertex2f(-7.0f,5.0f);
+    glVertex2f(-7.0f,2.0f);
+    glVertex2f(-8.0f,2.0f);
+    glEnd();
+
+    //fingerprint1  display
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
+    glVertex2f(-7.75f,4.50f);
+    glVertex2f(-7.25f,4.50f);
+    glVertex2f(-7.25f,4.25f);
+    glVertex2f(-7.75f,4.25f);
+    glEnd();
+
+    //finger print1 position
+    glBegin(GL_POLYGON);
+    glColor3ub(9, 230, 212);
+    glVertex2f(-7.62f,3.00f);
+    glVertex2f(-7.33f,3.00f);
+    glVertex2f(-7.33f,2.50f);
+    glVertex2f(-7.62f,2.50f);
+    glEnd();
+
+    //bench big back
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
+    glVertex2f(5.0f,-7.0f);
+    glVertex2f(4.0f,-2.0f);
+    glVertex2f(18.0f,-2.0f);
+    glVertex2f(17.0f,-7.0f);
+
+    glEnd();
+    //bench midle rect
+    glBegin(GL_POLYGON);
+    glColor3ub(60, 113, 166);
+    glVertex2f(4.0f,-7.0f);
+    glVertex2f(18.0f,-7.0f);
+    glVertex2f(18.0f,-8.0f);
+    glVertex2f(4.0f,-8.0f);
+    glEnd();
+
+    //rect bench
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
+    glVertex2f(4.00f,-7.00f);
+    glVertex2f(18.00f,-7.00f);
+    glVertex2f(18.00f,-8.00f);
+    glVertex2f(4.00f,-8.00f);
+    glEnd();
+
+
+
+   //1legbench
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
+    glVertex2f(4.00f,-8.00f);
+    glVertex2f(5.00f,-8.00f);
+    glVertex2f(6.00f,-11.00f);
+    glVertex2f(5.00f,-11.00f);
+    glEnd();
+    //2leg
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
+    glVertex2f(6.00f,-8.00f);
+    glVertex2f(6.75f,-8.00f);
+    glVertex2f(7.25f,-11.00f);
+    glVertex2f(6.50f,-11.00f);
+    glEnd();
+    //3rdleg
+
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
+    glVertex2f(15.25f,-8.00f);
+    glVertex2f(16.00f,-8.00f);
+    glVertex2f(15.5f,-11.00f);
+    glVertex2f(14.75f,-11.00f);
+    glEnd();
+    //4th leg
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 133, 158);
+    glVertex2f(17.0f,-8.00f);
+    glVertex2f(18.00f,-8.00f);
+    glVertex2f(17.25f,-11.00f);
+    glVertex2f(16.25f,-11.00f);
+    glEnd();
+    //fire box
+    glBegin(GL_POLYGON);
+    glColor3ub(219, 15, 36);
+    glVertex2f(9.0f,6.00f);
+    glVertex2f(12.00f,6.00f);
+    glVertex2f(12.00f,3.00f);
+    glVertex2f(9.00f,3.00f);
+    glEnd();
+
+    //fireboxsmall
+    glBegin(GL_POLYGON);
+    glColor3ub(47, 62, 66);
+    glVertex2f(10.0f,5.00f);
+    glVertex2f(11.00f,5.00f);
+    glVertex2f(11.00f,4.00f);
+    glVertex2f(10.00f,4.00f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(23, 21, 21);
+    glVertex2f(4.50f,-4.00f);
+    glVertex2f(17.50f,-4.00f);
+    glEnd();
+    //line
+    glBegin(GL_LINES);
+    glColor3ub(23, 21, 21);
+    glVertex2f(4.75f,-5.50f);
+    glVertex2f(17.25f,-5.50f);
+    glEnd();
+
+     //noticeboard
+    glBegin(GL_POLYGON);
+    glColor3ub(4, 89, 81);
+    glVertex2f(-3.0f,12.0f);
+    glVertex2f(5.0f,12.0f);
+    glVertex2f(5.0f,4.0f);
+    glVertex2f(-3.0f,4.0f);
+    glEnd();
+
+
+    glColor3ub(25, 25, 27);
+    // Draw floor
+    glBegin(GL_POLYGON);
+    glVertex2f(-20.0f, -10.0f);
+    glVertex2f(20.0f, -10.0f);
+    glVertex2f(20.0f, -20.0f);
+    glVertex2f(-20.0f, -20.0f);
+    glEnd();
+
+}
+
+
+
+
 float playerX = -18.0f;
 float playerY = -12.0f;
 
@@ -50,9 +225,13 @@ void checkCollision() {
     }
 
     // Increasing level from 1 to 2
-     if (score > 20 && !levelIncreased){
-        level++;
-        levelIncreased = true;
+     if (score > 20){
+        level = 2;
+
+    }
+
+    if (score > 30){
+        level = 3;
     }
 }
 
@@ -289,7 +468,7 @@ void background2(){
     glVertex2f(-8.0f,2.0f);
     glEnd();
 
-       //fingerprint1  display
+    //fingerprint1  display
     glBegin(GL_POLYGON);
     glColor3ub(205, 209, 206);
     glVertex2f(-7.75f,4.50f);
@@ -406,10 +585,10 @@ void background2(){
     //noticeboard
     glBegin(GL_POLYGON);
     glColor3ub(4, 89, 81);
-    glVertex2f(-4.0f,12.0f);
+    glVertex2f(-3.0f,12.0f);
     glVertex2f(5.0f,12.0f);
     glVertex2f(5.0f,4.0f);
-    glVertex2f(-4.0f,4.0f);
+    glVertex2f(-3.0f,4.0f);
     glEnd();
 
     //floor
@@ -422,11 +601,6 @@ void background2(){
     glEnd();
 
 }
-
-void background3(){
-
-}
-
 
 void update(int value) {
 
@@ -457,6 +631,9 @@ void display() {
 
     if (level == 2){
         background2();
+    }
+    else if (level == 3){
+        background3();
     }
 
     // Draw player, bullet, and enemies
