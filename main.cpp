@@ -28,6 +28,7 @@ int score = 0;
 
 void renderBitmapString(float x, float y, float z, void *font, char *string)
 {
+     glColor3f(1.0,1.0,1.0);
     char *c;
     glRasterPos3f(x, y,z);
     for (c=string; *c != '\0'; c++)
@@ -101,7 +102,7 @@ glClear(GL_COLOR_BUFFER_BIT);
 
     //background
     glBegin(GL_POLYGON);
-   glColor3ub(184, 145, 150);
+    glColor3ub(184, 145, 150);
     glVertex2f(-20.0f,20.0f);
     glVertex2f(20.0f,20.0f);
     glVertex2f(20.0f,-20.0f);
@@ -109,16 +110,17 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
     //door 1
-      glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3f(0.1f, 0.1f, 0.1f);
     glVertex2f(-15.0f,14.0f);
     glVertex2f(-9.0f,14.0f);
     glVertex2f(-9.0f,-10.0f);
     glVertex2f(-15.0f,-10.0f);
     glEnd();
-//door 1 glass
-        glBegin(GL_POLYGON);
-   glColor3ub(205, 209, 206);
+
+    //door 1 glass
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
     glVertex2f(-11.0f,11.0f);
     glVertex2f(-9.0f,11.0f);
     glVertex2f(-9.0f,5.0f);
@@ -126,7 +128,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
     //door 2
-        glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3f(0.1f, 0.1f, 0.1f);
     glVertex2f(10.0f,14.0f);
     glVertex2f(16.0f,14.0f);
@@ -135,7 +137,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
     //door2 glass
      glBegin(GL_POLYGON);
-  glColor3ub(205, 209, 206);
+    glColor3ub(205, 209, 206);
     glVertex2f(14.0f,11.0f);
     glVertex2f(16.0f,11.0f);
     glVertex2f(16.0f,5.0f);
@@ -143,9 +145,9 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
 
-        //fingerprint1
-             glBegin(GL_POLYGON);
-     glColor3ub(37, 48, 47);
+    //fingerprint1
+    glBegin(GL_POLYGON);
+    glColor3ub(37, 48, 47);
     glVertex2f(-8.0f,5.0f);
     glVertex2f(-7.0f,5.0f);
     glVertex2f(-7.0f,2.0f);
@@ -153,8 +155,8 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
        //fingerprint1  display
-          glBegin(GL_POLYGON);
-     glColor3ub(205, 209, 206);
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
     glVertex2f(-7.75f,4.50f);
     glVertex2f(-7.25f,4.50f);
     glVertex2f(-7.25f,4.25f);
@@ -164,8 +166,8 @@ glClear(GL_COLOR_BUFFER_BIT);
     //finger print1 position
 
 
-       glBegin(GL_POLYGON);
-     glColor3ub(9, 230, 212);
+    glBegin(GL_POLYGON);
+    glColor3ub(9, 230, 212);
     glVertex2f(-7.62f,3.00f);
     glVertex2f(-7.33f,3.00f);
     glVertex2f(-7.33f,2.50f);
@@ -173,16 +175,16 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
       //fingerprint 2
-          glBegin(GL_POLYGON);
-     glColor3ub(37, 48, 47);
+    glBegin(GL_POLYGON);
+    glColor3ub(37, 48, 47);
     glVertex2f(18.0f,5.0f);
     glVertex2f(19.0f,5.0f);
     glVertex2f(19.0f,2.0f);
     glVertex2f(18.0f,2.0f);
     glEnd();
     //finer print 2 display
-        glBegin(GL_POLYGON);
-     glColor3ub(205, 209, 206);
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
     glVertex2f(18.25f,4.50f);
     glVertex2f(18.75f,4.50f);
     glVertex2f(18.75f,4.25f);
@@ -191,8 +193,8 @@ glClear(GL_COLOR_BUFFER_BIT);
     //finger print2 position
 
 
-       glBegin(GL_POLYGON);
-     glColor3ub(9, 230, 212);
+    glBegin(GL_POLYGON);
+    glColor3ub(9, 230, 212);
     glVertex2f(18.33f,3.00f);
     glVertex2f(18.62f,3.00f);
     glVertex2f(18.62f,2.50f);
@@ -265,7 +267,7 @@ void update(int value) {
         }
     }
     glutPostRedisplay();
-    glutTimerFunc(10, update, 0);  // 60 FPS
+    glutTimerFunc(5, update, 0);
 }
 
 void display() {
@@ -276,11 +278,15 @@ void display() {
     checkCollision();
 
 
+    renderBitmapString(-1.5f, 8.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "Notice Board");
+    renderBitmapString(-1.5f, 6.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "Cancel Final Term");
+
     if (isBulletActive) {
         drawBullet();
     }
 
     glutSwapBuffers();
+
 }
 
 void handleKeypress(unsigned char key, int x, int y) {
