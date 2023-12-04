@@ -5,7 +5,6 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
-
 #define PI 3.1416
 
 float playerX = -18.0f;
@@ -19,6 +18,8 @@ bool isPlayerMoving = true;
 
 int score = 0;
 int level = 1;
+bool levelIncreased = false;
+
 
 const int numEnemies = 5;  // Adjust the number of enemies as needed
 std::vector<float> enemyX(numEnemies, 0.0f);
@@ -45,6 +46,12 @@ void checkCollision() {
             enemyX[i] = 20.0f;
             enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
         }
+    }
+
+    // Increasing level from 1 to 2
+     if (score > 20 && !levelIncreased){
+        level++;
+        levelIncreased = true;
     }
 }
 
@@ -124,7 +131,7 @@ void background() {
     glVertex2f(10.0f,-10.0f);
     glEnd();
     //door2 glass
-     glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3ub(205, 209, 206);
     glVertex2f(14.0f,11.0f);
     glVertex2f(16.0f,11.0f);
@@ -189,15 +196,15 @@ void background() {
     glVertex2f(18.33f,2.50f);
     glEnd();
     //noticeboard
-            glBegin(GL_POLYGON);
-     glColor3ub(4, 89, 81);
+    glBegin(GL_POLYGON);
+    glColor3ub(4, 89, 81);
     glVertex2f(-3.0f,12.0f);
     glVertex2f(5.0f,12.0f);
     glVertex2f(5.0f,4.0f);
     glVertex2f(-3.0f,4.0f);
     glEnd();
 
-     //dustbin trinagle
+    //dustbin trinagle
     glBegin(GL_POLYGON);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex2f(-3.0f,0.0f);
@@ -205,18 +212,19 @@ void background() {
     glVertex2f(-1.0f,1.0f);
     glVertex2f(0.0f,0.0f);
     glEnd();
- //dustbin big rectangle
-        glBegin(GL_POLYGON);
-     glColor3ub(33, 156, 61);
+
+    //dustbin big rectangle
+    glBegin(GL_POLYGON);
+    glColor3ub(33, 156, 61);
     glVertex2f(-3.0f,0.0f);
     glVertex2f(0.0f,0.0f);
     glVertex2f(0.0f,-10.0f);
     glVertex2f(-3.0f,-10.0f);
     glEnd();
 
-//dustbin midlle rectangle
+    //dustbin midlle rectangle
 
-      glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3ub(256, 256, 256);
     glVertex2f(-2.0f,-2.0f);
     glVertex2f(-1.0f,-2.0f);
@@ -244,27 +252,27 @@ void gunShotSound() {
 // Level 2 background code
 void background2(){
 
-glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
-  glBegin(GL_POLYGON);
-   glColor3ub(184, 145, 150);
+    glBegin(GL_POLYGON);
+    glColor3ub(184, 145, 150);
     glVertex2f(-20.0f,20.0f);
     glVertex2f(20.0f,20.0f);
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
- //door 1
-      glBegin(GL_POLYGON);
+    //door 1
+    glBegin(GL_POLYGON);
     glColor3f(0.1f, 0.1f, 0.1f);
     glVertex2f(-15.0f,14.0f);
     glVertex2f(-9.0f,14.0f);
     glVertex2f(-9.0f,-10.0f);
     glVertex2f(-15.0f,-10.0f);
     glEnd();
-//door 1 glass
-        glBegin(GL_POLYGON);
-   glColor3ub(205, 209, 206);
+    //door 1 glass
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
     glVertex2f(-11.0f,11.0f);
     glVertex2f(-9.0f,11.0f);
     glVertex2f(-9.0f,5.0f);
@@ -272,8 +280,8 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
     //fingerprint
-  glBegin(GL_POLYGON);
-     glColor3ub(37, 48, 47);
+    glBegin(GL_POLYGON);
+    glColor3ub(37, 48, 47);
     glVertex2f(-8.0f,5.0f);
     glVertex2f(-7.0f,5.0f);
     glVertex2f(-7.0f,2.0f);
@@ -281,8 +289,8 @@ glClear(GL_COLOR_BUFFER_BIT);
     glEnd();
 
        //fingerprint1  display
-          glBegin(GL_POLYGON);
-     glColor3ub(205, 209, 206);
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
     glVertex2f(-7.75f,4.50f);
     glVertex2f(-7.25f,4.50f);
     glVertex2f(-7.25f,4.25f);
@@ -439,7 +447,8 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     background();
 
-    if (score > 20){
+
+    if (level == 2){
         background2();
     }
 
@@ -501,6 +510,8 @@ int main(int argc, char** argv) {
     glutTimerFunc(25, update, 0);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     gluOrtho2D(-20.0, 20.0, -20.0, 20.0);
+
+
 
     // Seed for random number generation
     srand(static_cast<unsigned int>(time(nullptr)));
