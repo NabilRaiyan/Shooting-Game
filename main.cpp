@@ -97,7 +97,7 @@ void checkPlayerCollision() {
 }
 
 
-void drawNoticeBoard(){
+void drawNoticeBoard(float r, float g, float b){
       // noticeboard border
     glBegin(GL_POLYGON);
     glColor3ub(136, 83, 63);
@@ -109,7 +109,7 @@ void drawNoticeBoard(){
 
     //noticeboard
     glBegin(GL_POLYGON);
-    glColor3ub(4, 89, 81);
+    glColor3ub(r, g, b);
     glVertex2f(-3.0f,14.0f);
     glVertex2f(5.0f,14.0f);
     glVertex2f(5.0f,4.0f);
@@ -304,7 +304,7 @@ void background() {
     glEnd();
 
     // drawing noticeboard
-    drawNoticeBoard();
+    drawNoticeBoard(73, 39, 33);
 
     // draw Left door
     drawLeftDoor();
@@ -558,7 +558,7 @@ void background2(){
     glEnd();
 
     // Drawing noticeboard
-    drawNoticeBoard();
+    drawNoticeBoard(4, 84, 77);
 
     // draw floor
     drawFloor();
@@ -575,10 +575,6 @@ void background3() {
 
     // Left door
     drawLeftDoor();
-
-
-
-
 
     //fingerprint
     glBegin(GL_POLYGON);
@@ -700,7 +696,7 @@ void background3() {
     glEnd();
 
     // drawing noticeboard
-    drawNoticeBoard();
+    drawNoticeBoard(73, 39, 33);
 
     // Draw floor
     drawFloor();
