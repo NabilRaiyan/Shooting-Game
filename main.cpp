@@ -118,10 +118,10 @@ void drawNoticeBoard(float r, float g, float b){
 
 }
 
-void drawWall(){
+void drawWall(float r, float g, float b){
      // Wall color
     glBegin(GL_POLYGON);
-    glColor3ub(242, 234, 198);
+    glColor3ub(r, g, b);
     glVertex2f(-20.0f,20.0f);
     glVertex2f(20.0f,20.0f);
     glVertex2f(20.0f,-20.0f);
@@ -295,13 +295,7 @@ void background() {
     glLineWidth(0.5);
 
     //background
-    glBegin(GL_POLYGON);
-    glColor3ub(184, 145, 150);
-    glVertex2f(-20.0f,20.0f);
-    glVertex2f(20.0f,20.0f);
-    glVertex2f(20.0f,-20.0f);
-    glVertex2f(-20.0f,-20.0f);
-    glEnd();
+    drawWall(232, 224, 190);
 
     // drawing noticeboard
     drawNoticeBoard(73, 39, 33);
@@ -423,13 +417,7 @@ void background2(){
     glLineWidth(0.5);
 
     // Draw wall
-    glBegin(GL_POLYGON);
-    glColor3ub(184, 145, 150);
-    glVertex2f(-20.0f,20.0f);
-    glVertex2f(20.0f,20.0f);
-    glVertex2f(20.0f,-20.0f);
-    glVertex2f(-20.0f,-20.0f);
-    glEnd();
+    drawWall(212, 214, 198);
 
     // Draw left door
     drawLeftDoor();
@@ -571,7 +559,7 @@ void background3() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
-    drawWall();
+    drawWall(242, 234, 198);
 
     // Left door
     drawLeftDoor();
