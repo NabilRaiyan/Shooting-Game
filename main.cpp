@@ -32,7 +32,7 @@ std::vector<float> enemyX(numEnemies, 0.0f);
 std::vector<float> enemyY(numEnemies, 0.0f);
 
 void renderBitmapString(float x, float y, float z, void* font, char* string) {
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3ub(255, 255, 255);
     char* c;
     glRasterPos3f(x, y, z);
     for (c = string; *c != '\0'; c++) {
@@ -88,10 +88,10 @@ void checkPlayerCollision() {
             }
 
             // Check if player is out of health
-            if (playerHealth <= 0) {
-                std::cout << "Game over! Player is out of health." << std::endl;
-                exit(0);  // Exit the game or handle game over state as needed
-            }
+//            if (playerHealth <= 0) {
+//                std::cout << "Game over! Player is out of health." << std::endl;
+//                exit(0);  // Exit the game or handle game over state as needed
+//            }
         }
     }
 }
@@ -241,8 +241,8 @@ void background() {
     //noticeboard
     glBegin(GL_POLYGON);
     glColor3ub(4, 89, 81);
-    glVertex2f(-3.0f,12.0f);
-    glVertex2f(5.0f,12.0f);
+    glVertex2f(-3.0f,14.0f);
+    glVertex2f(5.0f,14.0f);
     glVertex2f(5.0f,4.0f);
     glVertex2f(-3.0f,4.0f);
     glEnd();
@@ -448,8 +448,8 @@ void background2(){
     //noticeboard
     glBegin(GL_POLYGON);
     glColor3ub(4, 89, 81);
-    glVertex2f(-3.0f,12.0f);
-    glVertex2f(5.0f,12.0f);
+    glVertex2f(-3.0f,14.0f);
+    glVertex2f(5.0f,14.0f);
     glVertex2f(5.0f,4.0f);
     glVertex2f(-3.0f,4.0f);
     glEnd();
@@ -470,8 +470,7 @@ void background3() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
-
-
+    // Wall color
     glBegin(GL_POLYGON);
     glColor3ub(242, 234, 198);
     glVertex2f(-20.0f,20.0f);
@@ -659,8 +658,8 @@ void background3() {
      //noticeboard
     glBegin(GL_POLYGON);
     glColor3ub(4, 89, 81);
-    glVertex2f(-3.0f,12.0f);
-    glVertex2f(5.0f,12.0f);
+    glVertex2f(-3.0f,14.0f);
+    glVertex2f(5.0f,14.0f);
     glVertex2f(5.0f,4.0f);
     glVertex2f(-3.0f,4.0f);
     glEnd();
@@ -720,16 +719,22 @@ void display() {
     drawEnemy();
 
     // Render text and other UI elements
-    renderBitmapString(-0.2f, 10.0f, 0.0f, GLUT_BITMAP_HELVETICA_12, "Notice Board");
-    glRasterPos2f(-0.2f, 8.0f);
+    renderBitmapString(-0.2f, 12.0f, 0.0f, GLUT_BITMAP_HELVETICA_12, "Notice Board");
+    glRasterPos2f(-0.2f, 10.0f);
     std::string scoreText = "Score: " + std::to_string(score);
     for (char c : scoreText) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
     }
 
-    glRasterPos2f(-0.2f, 6.0f);
+    glRasterPos2f(-0.2f, 8.0f);
     std::string levelText = "Level: " + std::to_string(level);
     for (char c : levelText) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+    }
+
+     glRasterPos2f(-0.2f, 6.0f);
+    std::string playerHealthText = "Health: " + std::to_string(playerHealth);
+    for (char c : playerHealthText) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
     }
 
