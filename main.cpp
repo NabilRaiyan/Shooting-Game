@@ -55,12 +55,12 @@ void checkCollision() {
     }
 
     // Increasing level from 1 to 2
-     if (score > 20){
+     if (score > 10){
         level = 2;
 
     }
 
-    if (score > 30){
+    if (score > 20){
         level = 3;
     }
 }
@@ -96,6 +96,160 @@ void checkPlayerCollision() {
     }
 }
 
+
+void drawNoticeBoard(){
+      // noticeboard border
+    glBegin(GL_POLYGON);
+    glColor3ub(136, 83, 63);
+    glVertex2f(-3.3f,14.5f);
+    glVertex2f(5.3f,14.5f);
+    glVertex2f(5.3f,3.5f);
+    glVertex2f(-3.3f,3.5f);
+    glEnd();
+
+    //noticeboard
+    glBegin(GL_POLYGON);
+    glColor3ub(4, 89, 81);
+    glVertex2f(-3.0f,14.0f);
+    glVertex2f(5.0f,14.0f);
+    glVertex2f(5.0f,4.0f);
+    glVertex2f(-3.0f,4.0f);
+    glEnd();
+
+}
+
+void drawWall(){
+     // Wall color
+    glBegin(GL_POLYGON);
+    glColor3ub(242, 234, 198);
+    glVertex2f(-20.0f,20.0f);
+    glVertex2f(20.0f,20.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+
+    // Wall lower part
+    glBegin(GL_POLYGON);
+    glColor3ub(149, 112, 100);
+    glVertex2f(-20.0f, -8.5f);
+    glVertex2f(20.0f,-8.5f);
+    glVertex2f(20.0f,-10.0f);
+    glVertex2f(-20.0f,-10.0f);
+    glEnd();
+
+}
+
+void drawFloor(){
+     //floor
+    glBegin(GL_POLYGON);
+    glColor3ub(47, 62, 66);
+    glVertex2f(-20.0f,-10.0f);
+    glVertex2f(20.0f,-10.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+}
+
+void drawLeftDoor(){
+    //door 1
+    glBegin(GL_POLYGON);
+    glColor3ub(149, 112, 100);
+    glVertex2f(-15.0f,14.0f);
+    glVertex2f(-9.0f,14.0f);
+    glVertex2f(-9.0f,-10.0f);
+    glVertex2f(-15.0f,-10.0f);
+    glEnd();
+
+    // door 1 side bar
+    glBegin(GL_POLYGON);
+    glColor3ub(136, 83, 63);
+    glVertex2f(-14.5f, 13.0f);
+    glVertex2f(-9.5f,13.0f);
+    glVertex2f(-9.5f,-8.5f);
+    glVertex2f(-14.5f,-8.5f);
+    glEnd();
+
+    //door 1 glass upper glass
+    glBegin(GL_POLYGON);
+    glColor3ub(108, 165, 191);
+    glVertex2f(-13.5f, 10.0f);
+    glVertex2f(-10.5f,10.0f);
+    glVertex2f(-10.5f,2.0f);
+    glVertex2f(-13.5f,2.0f);
+    glEnd();
+
+    //door 1 glass lower glass
+    glBegin(GL_POLYGON);
+    glColor3ub(108, 165, 191);
+    glVertex2f(-13.5f, -7.0f);
+    glVertex2f(-10.5f,-7.0f);
+    glVertex2f(-10.5f,-3.5f);
+    glVertex2f(-13.5f,-3.5f);
+    glEnd();
+
+    // door handle
+    glBegin(GL_POLYGON);
+    glColor3ub(189, 178, 187);
+    glVertex2f(-11.0f, 1.0f);
+    glVertex2f(-10.5f,1.0f);
+    glVertex2f(-10.5f,-2.0f);
+    glVertex2f(-11.0f,-2.0f);
+    glEnd();
+
+}
+
+// Drawing right door
+void drawRightDoor(){
+    //door 1
+    glBegin(GL_POLYGON);
+    glColor3ub(149, 112, 100);
+    glVertex2f(10.0f,14.0f);
+    glVertex2f(16.0f,14.0f);
+    glVertex2f(16.0f,-10.0f);
+    glVertex2f(10.0f,-10.0f);
+    glEnd();
+
+    // door 2 side bar
+    glBegin(GL_POLYGON);
+    glColor3ub(136, 83, 63);
+    glVertex2f(10.0f, 13.0f);
+    glVertex2f(16.0f,13.0f);
+    glVertex2f(16.0f,-8.5f);
+    glVertex2f(10.0f,-8.5f);
+    glEnd();
+
+    //door 2 glass upper glass
+    glBegin(GL_POLYGON);
+    glColor3ub(108, 165, 191);
+    glVertex2f(-13.5f, 10.0f);
+    glVertex2f(-10.5f,10.0f);
+    glVertex2f(-10.5f,2.0f);
+    glVertex2f(-13.5f,2.0f);
+    glEnd();
+
+    //door 1 glass lower glass
+    glBegin(GL_POLYGON);
+    glColor3ub(108, 165, 191);
+    glVertex2f(-13.5f, -7.0f);
+    glVertex2f(-10.5f,-7.0f);
+    glVertex2f(-10.5f,-3.5f);
+    glVertex2f(-13.5f,-3.5f);
+    glEnd();
+
+    // door handle
+    glBegin(GL_POLYGON);
+    glColor3ub(189, 178, 187);
+    glVertex2f(-11.0f, 1.0f);
+    glVertex2f(-10.5f,1.0f);
+    glVertex2f(-10.5f,-2.0f);
+    glVertex2f(-11.0f,-2.0f);
+    glEnd();
+
+}
+
+// Draw enemy, player and bullet
 
 void drawEnemy() {
     for (int i = 0; i < numEnemies; ++i) {
@@ -134,6 +288,8 @@ void drawPlayer() {
     glEnd();
 }
 
+
+// draw Scence
 void background() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
@@ -147,40 +303,15 @@ void background() {
     glVertex2f(-20.0f,-20.0f);
     glEnd();
 
-    //door 1
-    glBegin(GL_POLYGON);
-    glColor3f(0.1f, 0.1f, 0.1f);
-    glVertex2f(-15.0f,14.0f);
-    glVertex2f(-9.0f,14.0f);
-    glVertex2f(-9.0f,-10.0f);
-    glVertex2f(-15.0f,-10.0f);
-    glEnd();
+    // drawing noticeboard
+    drawNoticeBoard();
 
-    //door 1 glass
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(-11.0f,11.0f);
-    glVertex2f(-9.0f,11.0f);
-    glVertex2f(-9.0f,5.0f);
-    glVertex2f(-11.0f,5.0f);
-    glEnd();
+    // draw Left door
+    drawLeftDoor();
 
     //door 2
     glBegin(GL_POLYGON);
-    glColor3f(0.1f, 0.1f, 0.1f);
-    glVertex2f(10.0f,14.0f);
-    glVertex2f(16.0f,14.0f);
-    glVertex2f(16.0f,-10.0f);
-    glVertex2f(10.0f,-10.0f);
-    glEnd();
-    //door2 glass
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(14.0f,11.0f);
-    glVertex2f(16.0f,11.0f);
-    glVertex2f(16.0f,5.0f);
-    glVertex2f(14.0f,5.0f);
-    glEnd();
+    drawRightDoor();
 
 
     //fingerprint1
@@ -238,14 +369,8 @@ void background() {
     glVertex2f(18.62f,2.50f);
     glVertex2f(18.33f,2.50f);
     glEnd();
-    //noticeboard
-    glBegin(GL_POLYGON);
-    glColor3ub(4, 89, 81);
-    glVertex2f(-3.0f,14.0f);
-    glVertex2f(5.0f,14.0f);
-    glVertex2f(5.0f,4.0f);
-    glVertex2f(-3.0f,4.0f);
-    glEnd();
+
+
 
     //dustbin trinagle
     glBegin(GL_POLYGON);
@@ -298,6 +423,7 @@ void background2(){
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
+    // Draw wall
     glBegin(GL_POLYGON);
     glColor3ub(184, 145, 150);
     glVertex2f(-20.0f,20.0f);
@@ -305,22 +431,9 @@ void background2(){
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
-    //door 1
-    glBegin(GL_POLYGON);
-    glColor3f(0.1f, 0.1f, 0.1f);
-    glVertex2f(-15.0f,14.0f);
-    glVertex2f(-9.0f,14.0f);
-    glVertex2f(-9.0f,-10.0f);
-    glVertex2f(-15.0f,-10.0f);
-    glEnd();
-    //door 1 glass
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(-11.0f,11.0f);
-    glVertex2f(-9.0f,11.0f);
-    glVertex2f(-9.0f,5.0f);
-    glVertex2f(-11.0f,5.0f);
-    glEnd();
+
+    // Draw left door
+    drawLeftDoor();
 
     //fingerprint
     glBegin(GL_POLYGON);
@@ -445,23 +558,12 @@ void background2(){
     glVertex2f(17.25f,-5.50f);
     glEnd();
 
-    //noticeboard
-    glBegin(GL_POLYGON);
-    glColor3ub(4, 89, 81);
-    glVertex2f(-3.0f,14.0f);
-    glVertex2f(5.0f,14.0f);
-    glVertex2f(5.0f,4.0f);
-    glVertex2f(-3.0f,4.0f);
-    glEnd();
+    // Drawing noticeboard
+    drawNoticeBoard();
 
-    //floor
-    glBegin(GL_POLYGON);
-    glColor3ub(47, 62, 66);
-    glVertex2f(-20.0f,-10.0f);
-    glVertex2f(20.0f,-10.0f);
-    glVertex2f(20.0f,-20.0f);
-    glVertex2f(-20.0f,-20.0f);
-    glEnd();
+    // draw floor
+    drawFloor();
+
 
 }
 
@@ -470,69 +572,12 @@ void background3() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
-    // Wall color
-    glBegin(GL_POLYGON);
-    glColor3ub(242, 234, 198);
-    glVertex2f(-20.0f,20.0f);
-    glVertex2f(20.0f,20.0f);
-    glVertex2f(20.0f,-20.0f);
-    glVertex2f(-20.0f,-20.0f);
-    glEnd();
+    drawWall();
+
+    // Left door
+    drawLeftDoor();
 
 
-    // Wall lower part
-    glBegin(GL_POLYGON);
-    glColor3ub(149, 112, 100);
-    glVertex2f(-20.0f, -8.5f);
-    glVertex2f(20.0f,-8.5f);
-    glVertex2f(20.0f,-10.0f);
-    glVertex2f(-20.0f,-10.0f);
-    glEnd();
-
-    //door 1
-    glBegin(GL_POLYGON);
-    glColor3ub(149, 112, 100);
-    glVertex2f(-15.0f,14.0f);
-    glVertex2f(-9.0f,14.0f);
-    glVertex2f(-9.0f,-10.0f);
-    glVertex2f(-15.0f,-10.0f);
-    glEnd();
-
-    // door 1 side bar
-    glBegin(GL_POLYGON);
-    glColor3ub(136, 83, 63);
-    glVertex2f(-14.5f, 13.0f);
-    glVertex2f(-9.5f,13.0f);
-    glVertex2f(-9.5f,-8.5f);
-    glVertex2f(-14.5f,-8.5f);
-    glEnd();
-
-    //door 1 glass upper glass
-    glBegin(GL_POLYGON);
-    glColor3ub(108, 165, 191);
-    glVertex2f(-13.5f, 10.0f);
-    glVertex2f(-10.5f,10.0f);
-    glVertex2f(-10.5f,2.0f);
-    glVertex2f(-13.5f,2.0f);
-    glEnd();
-
-    //door 1 glass lower glass
-    glBegin(GL_POLYGON);
-    glColor3ub(108, 165, 191);
-    glVertex2f(-13.5f, -7.0f);
-    glVertex2f(-10.5f,-7.0f);
-    glVertex2f(-10.5f,-3.5f);
-    glVertex2f(-13.5f,-3.5f);
-    glEnd();
-
-    // door handle
-    glBegin(GL_POLYGON);
-    glColor3ub(189, 178, 187);
-    glVertex2f(-11.0f, 1.0f);
-    glVertex2f(-10.5f,1.0f);
-    glVertex2f(-10.5f,-2.0f);
-    glVertex2f(-11.0f,-2.0f);
-    glEnd();
 
 
 
@@ -655,24 +700,11 @@ void background3() {
     glVertex2f(17.25f,-5.50f);
     glEnd();
 
-     //noticeboard
-    glBegin(GL_POLYGON);
-    glColor3ub(4, 89, 81);
-    glVertex2f(-3.0f,14.0f);
-    glVertex2f(5.0f,14.0f);
-    glVertex2f(5.0f,4.0f);
-    glVertex2f(-3.0f,4.0f);
-    glEnd();
+    // drawing noticeboard
+    drawNoticeBoard();
 
-
-    glColor3ub(47, 62, 66);
     // Draw floor
-    glBegin(GL_POLYGON);
-    glVertex2f(-20.0f, -10.0f);
-    glVertex2f(20.0f, -10.0f);
-    glVertex2f(20.0f, -20.0f);
-    glVertex2f(-20.0f, -20.0f);
-    glEnd();
+    drawFloor();
 
 }
 
@@ -703,7 +735,7 @@ void update(int value) {
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
-    background3();
+    background();
 
 
     if (level == 2){
