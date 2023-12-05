@@ -201,10 +201,10 @@ void drawLeftDoor(){
 }
 
 // Drawing right door
-void drawRightDoor(){
-    //door 1
+void drawRightDoor(float r, float g, float b){
+    //door 2
     glBegin(GL_POLYGON);
-    glColor3ub(149, 112, 100);
+    glColor3ub(r, g, b);
     glVertex2f(10.0f,14.0f);
     glVertex2f(16.0f,14.0f);
     glVertex2f(16.0f,-10.0f);
@@ -214,37 +214,37 @@ void drawRightDoor(){
     // door 2 side bar
     glBegin(GL_POLYGON);
     glColor3ub(136, 83, 63);
-    glVertex2f(10.0f, 13.0f);
-    glVertex2f(16.0f,13.0f);
-    glVertex2f(16.0f,-8.5f);
-    glVertex2f(10.0f,-8.5f);
+    glVertex2f(10.5f, 13.0f);
+    glVertex2f(15.5f,13.0f);
+    glVertex2f(15.5f,-8.5f);
+    glVertex2f(10.5f,-8.5f);
     glEnd();
 
     //door 2 glass upper glass
     glBegin(GL_POLYGON);
     glColor3ub(108, 165, 191);
-    glVertex2f(-13.5f, 10.0f);
-    glVertex2f(-10.5f,10.0f);
-    glVertex2f(-10.5f,2.0f);
-    glVertex2f(-13.5f,2.0f);
+    glVertex2f(14.5f, 10.0f);
+    glVertex2f(11.5f,10.0f);
+    glVertex2f(11.5f,2.0f);
+    glVertex2f(14.5f,2.0f);
     glEnd();
 
-    //door 1 glass lower glass
+    //door 2 glass lower glass
     glBegin(GL_POLYGON);
     glColor3ub(108, 165, 191);
-    glVertex2f(-13.5f, -7.0f);
-    glVertex2f(-10.5f,-7.0f);
-    glVertex2f(-10.5f,-3.5f);
-    glVertex2f(-13.5f,-3.5f);
+    glVertex2f(14.5f, -7.0f);
+    glVertex2f(11.5f,-7.0f);
+    glVertex2f(11.5f,-3.5f);
+    glVertex2f(14.5f,-3.5f);
     glEnd();
 
-    // door handle
+    // door 2 handle
     glBegin(GL_POLYGON);
     glColor3ub(189, 178, 187);
-    glVertex2f(-11.0f, 1.0f);
-    glVertex2f(-10.5f,1.0f);
-    glVertex2f(-10.5f,-2.0f);
-    glVertex2f(-11.0f,-2.0f);
+    glVertex2f(14.5f, 1.0f);
+    glVertex2f(14.0f,1.0f);
+    glVertex2f(14.0f,-2.0f);
+    glVertex2f(14.5f,-2.0f);
     glEnd();
 
 }
@@ -310,8 +310,7 @@ void background() {
     drawLeftDoor();
 
     //door 2
-    glBegin(GL_POLYGON);
-    drawRightDoor();
+    drawRightDoor(165, 112, 100);
 
 
     //fingerprint1
