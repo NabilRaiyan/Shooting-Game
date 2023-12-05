@@ -24,6 +24,7 @@ int level = 1;
 bool levelIncreased = false;
 
 int playerHealth = 3;
+float enemyMovementSpeed = 0.1f;
 
 
 
@@ -82,12 +83,22 @@ void checkCollision() {
 
     // Increasing level from 1 to 2
      if (score > 10){
+        //Sleep(1000);
+//        // Reset player position
+//        playerX = -18.0f;
+//        playerY = -12.0f;
         level = 2;
+        enemyMovementSpeed = 0.2;
 
     }
 
-    if (score > 20){
+    if (score > 30){
+        //Sleep(1000);
+//      // Reset player position
+//      playerX = -18.0f;
+//      playerY = -12.0f;
         level = 3;
+        enemyMovementSpeed = 0.3;
     }
 }
 
@@ -125,6 +136,19 @@ void checkPlayerCollision() {
     }
 }
 
+
+// Level up sign
+void levelUpSign(){
+    glBegin(GL_POLYGON);
+    glColor3ub(7, 48, 47);
+    glVertex2f(17.0f,1.0f);
+    glVertex2f(19.0f,1.0f);
+    glVertex2f(19.0f,-1.0f);
+    glVertex2f(17.0f,-1.0f);
+    glEnd();
+    renderBitmapString(17.2f, -0.3f, 0.0f, GLUT_BITMAP_HELVETICA_10, "Level Up");
+
+}
 
 void drawNoticeBoard(float r, float g, float b){
       // noticeboard border
@@ -518,6 +542,9 @@ void background() {
     //background
     drawWall(232, 224, 190);
 
+    // level up sign
+    levelUpSign();
+
     // drawing noticeboard
     drawNoticeBoard(73, 39, 33);
 
@@ -550,6 +577,9 @@ void background2(){
     // Draw wall
     drawWall(212, 214, 198);
 
+    // level up
+    levelUpSign();
+
     // Draw left door
     drawLeftDoor();
 
@@ -577,7 +607,11 @@ void background3() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
 
+    // draw wall
     drawWall(242, 234, 198);
+
+    // level up
+    levelUpSign();
 
     // Left door
     drawLeftDoor();
@@ -613,7 +647,7 @@ void update(int value) {
     }
 
     for (int i = 0; i < numEnemies; ++i) {
-        enemyX[i] -= 0.1f;
+        enemyX[i] -= enemyMovementSpeed;
         if (enemyX[i] < -20.0f) {
             enemyX[i] = 20.0f;
             enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
