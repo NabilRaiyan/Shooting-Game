@@ -16,13 +16,18 @@ float bulletY = 1.0f;
 
 bool isBulletActive = false;
 bool isPlayerMoving = true;
+bool isEnemyActive = false;
 
 int score = 0;
+
 int level = 1;
 bool levelIncreased = false;
 
+int playerHealth = 3;
 
-const int numEnemies = 5;  // Adjust the number of enemies as needed
+
+
+const int numEnemies = 1;  // Adjust the number of enemies as needed
 std::vector<float> enemyX(numEnemies, 0.0f);
 std::vector<float> enemyY(numEnemies, 0.0f);
 
@@ -37,7 +42,7 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 
 void checkCollision() {
     for (int i = 0; i < numEnemies; ++i) {
-        if (isBulletActive && bulletX >= enemyX[i] - 1.0f && bulletX <= enemyX[i] + 1.0f && bulletY >= enemyY[i] - 4.0f && bulletY <= enemyY[i] + 1.0f) {
+        if (isBulletActive && bulletX >= enemyX[i] - 1.0f && bulletX <= enemyX[i] + 1.0f && bulletY >= enemyY[i] - 3.0f && bulletY <= enemyY[i] + 1.0f) {
             std::cout << "Collision detected!" << std::endl;
             score += 1;
             std::cout << "Score: " << score << std::endl;
@@ -60,18 +65,51 @@ void checkCollision() {
     }
 }
 
+// Check collision of enemy with player
+void checkPlayerCollision() {
+
+    for (int i = 0; i < numEnemies; ++i) {
+        if (playerX - 1.0f <= enemyX[i] + 1.0f &&
+            playerX + 1.0f >= enemyX[i] - 1.0f &&
+            playerY - 5.0f <= enemyY[i] + 1.0f &&
+            playerY + 3.0f >= enemyY[i] - 4.0f) {
+            std::cout << "Player collided with an enemy!" << std::endl;
+            playerHealth--;  // Reduce player health
+            std::cout << "Player Health: " << playerHealth << std::endl;
+
+            // Reset player position
+            playerX = -18.0f;
+            playerY = -12.0f;
+
+            // Reset enemies
+            for (int j = 0; j < numEnemies; ++j) {
+                enemyX[j] = 20.0f;
+                enemyY[j] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+            }
+
+            // Check if player is out of health
+            if (playerHealth <= 0) {
+                std::cout << "Game over! Player is out of health." << std::endl;
+                exit(0);  // Exit the game or handle game over state as needed
+            }
+        }
+    }
+}
+
+
 void drawEnemy() {
     for (int i = 0; i < numEnemies; ++i) {
         if (enemyX[i] > -20.0f) {
             glBegin(GL_POLYGON);
             glColor3f(0.f, 0.0f, 1.0f);
-            glVertex2f(enemyX[i] + 1.0f, enemyY[i] - 4.0f);
-            glVertex2f(enemyX[i] - 1.0f, enemyY[i] - 4.0f);
+            glVertex2f(enemyX[i] + 1.0f, enemyY[i] - 3.0f);
+            glVertex2f(enemyX[i] - 1.0f, enemyY[i] - 3.0f);
             glVertex2f(enemyX[i] - 1.0f, enemyY[i] + 1.0f);
             glVertex2f(enemyX[i] + 1.0f, enemyY[i] + 1.0f);
             glEnd();
         }
     }
+
 }
 
 void drawBullet() {
@@ -659,6 +697,7 @@ void update(int value) {
     }
 
     checkCollision();
+    checkPlayerCollision();
     glutPostRedisplay();
     glutTimerFunc(5, update, 0);
 }
