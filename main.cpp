@@ -40,10 +40,36 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
     }
 }
 
+
+// All Sound
+
+// Gun shoot sound bu player
+void gunShotSound() {
+    sndPlaySound("gun_shoot_sound.wav", SND_ASYNC);
+}
+
+// enemy hit by bullet sound
+void enemyHitByBulletSound(){
+    sndPlaySound("deathSound.wav", SND_ASYNC);
+}
+
+// player hit by enemy sound
+void playerHitByEnemySound(){
+    sndPlaySound("playerHitByBulletSound.wav", SND_ASYNC);
+}
+
+// player death sound
+void playerDeathSound(){
+    sndPlaySound("playerDeathSound.wav", SND_ASYNC);
+}
+
+
+// Check collision of bullet with enemy
 void checkCollision() {
     for (int i = 0; i < numEnemies; ++i) {
         if (isBulletActive && bulletX >= enemyX[i] - 1.0f && bulletX <= enemyX[i] + 1.0f && bulletY >= enemyY[i] - 3.0f && bulletY <= enemyY[i] + 1.0f) {
             std::cout << "Collision detected!" << std::endl;
+            enemyHitByBulletSound();
             score += 1;
             std::cout << "Score: " << score << std::endl;
             isBulletActive = false;
@@ -74,6 +100,7 @@ void checkPlayerCollision() {
             playerY - 5.0f <= enemyY[i] + 1.0f &&
             playerY + 3.0f >= enemyY[i] - 4.0f) {
             std::cout << "Player collided with an enemy!" << std::endl;
+            playerHitByEnemySound();
             playerHealth--;  // Reduce player health
             std::cout << "Player Health: " << playerHealth << std::endl;
 
@@ -88,10 +115,12 @@ void checkPlayerCollision() {
             }
 
             // Check if player is out of health
-//            if (playerHealth <= 0) {
-//                std::cout << "Game over! Player is out of health." << std::endl;
-//                exit(0);  // Exit the game or handle game over state as needed
-//            }
+            if (playerHealth <= 0) {
+                playerDeathSound();
+                Sleep(1000);
+                std::cout << "Game over! Player is out of health." << std::endl;
+                exit(0);  // Exit the game or handle game over state as needed
+            }
         }
     }
 }
@@ -510,26 +539,6 @@ void background() {
 
     //floor
     drawFloor();
-}
-
-// Gun shoot sound bu player
-void gunShotSound() {
-    sndPlaySound("gun_shoot_sound.wav", SND_ASYNC);
-}
-
-// enemy hit by bullet sound
-void enemyHitByBulletSound(){
-    sndPlaySound("deathSound.wav", SND_ASYNC);
-}
-
-// player hit by enemy sound
-void playerHitByEnemySound(){
-    sndPlaySound("playerHitByBulletSound.wav", SND_ASYNC);
-}
-
-// player death sound
-void playerDeathSound(){
-    sndPlaySound("playerDeathSound.wav", SND_ASYNC);
 }
 
 // Level 2 background code
