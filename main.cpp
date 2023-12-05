@@ -512,10 +512,25 @@ void background() {
     drawFloor();
 }
 
+// Gun shoot sound bu player
 void gunShotSound() {
     sndPlaySound("gun_shoot_sound.wav", SND_ASYNC);
 }
 
+// enemy hit by bullet sound
+void enemyHitByBulletSound(){
+    sndPlaySound("deathSound.wav", SND_ASYNC);
+}
+
+// player hit by enemy sound
+void playerHitByEnemySound(){
+    sndPlaySound("playerHitByBulletSound.wav", SND_ASYNC);
+}
+
+// player death sound
+void playerDeathSound(){
+    sndPlaySound("playerDeathSound.wav", SND_ASYNC);
+}
 
 // Level 2 background code
 void background2(){
