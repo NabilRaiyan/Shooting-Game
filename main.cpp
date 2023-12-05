@@ -118,6 +118,88 @@ void drawNoticeBoard(float r, float g, float b){
 
 }
 
+// Draw Fingerprint 1
+
+void drawFingerPrint1(){
+
+      //fingerprint1
+    glBegin(GL_POLYGON);
+    glColor3ub(37, 48, 47);
+    glVertex2f(-8.0f,5.0f);
+    glVertex2f(-7.0f,5.0f);
+    glVertex2f(-7.0f,2.0f);
+    glVertex2f(-8.0f,2.0f);
+    glEnd();
+
+    //fingerprint1  display
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
+    glVertex2f(-7.75f,4.50f);
+    glVertex2f(-7.25f,4.50f);
+    glVertex2f(-7.25f,4.25f);
+    glVertex2f(-7.75f,4.25f);
+    glEnd();
+
+    //finger print1 position
+    glBegin(GL_POLYGON);
+    glColor3ub(9, 230, 212);
+    glVertex2f(-7.62f,3.00f);
+    glVertex2f(-7.33f,3.00f);
+    glVertex2f(-7.33f,2.50f);
+    glVertex2f(-7.62f,2.50f);
+    glEnd();
+}
+
+// Draw Fingerprint 2
+void drawFingerPrint2(){
+       //fingerprint 2
+    glBegin(GL_POLYGON);
+    glColor3ub(37, 48, 47);
+    glVertex2f(18.0f,5.0f);
+    glVertex2f(19.0f,5.0f);
+    glVertex2f(19.0f,2.0f);
+    glVertex2f(18.0f,2.0f);
+    glEnd();
+    //finer print 2 display
+    glBegin(GL_POLYGON);
+    glColor3ub(205, 209, 206);
+    glVertex2f(18.25f,4.50f);
+    glVertex2f(18.75f,4.50f);
+    glVertex2f(18.75f,4.25f);
+    glVertex2f(18.25f,4.25f);
+    glEnd();
+
+    //finger print2 position
+    glBegin(GL_POLYGON);
+    glColor3ub(9, 230, 212);
+    glVertex2f(18.33f,3.00f);
+    glVertex2f(18.62f,3.00f);
+    glVertex2f(18.62f,2.50f);
+    glVertex2f(18.33f,2.50f);
+    glEnd();
+}
+
+// drawFirebox
+void drawFireBox(){
+      //fire box
+    glBegin(GL_POLYGON);
+    glColor3ub(219, 15, 36);
+    glVertex2f(9.0f,6.00f);
+    glVertex2f(12.00f,6.00f);
+    glVertex2f(12.00f,3.00f);
+    glVertex2f(9.00f,3.00f);
+    glEnd();
+
+    //fireboxsmall
+    glBegin(GL_POLYGON);
+    glColor3ub(47, 62, 66);
+    glVertex2f(10.0f,5.00f);
+    glVertex2f(11.00f,5.00f);
+    glVertex2f(11.00f,4.00f);
+    glVertex2f(10.00f,4.00f);
+    glEnd();
+}
+
 void drawDustbin(){
 
       //dustbin trinagle
@@ -337,74 +419,18 @@ void background() {
     //door 2
     drawRightDoor(165, 112, 100);
 
+    // Draw FingerPrint 1
+    drawFingerPrint1();
 
-    //fingerprint1
-    glBegin(GL_POLYGON);
-    glColor3ub(37, 48, 47);
-    glVertex2f(-8.0f,5.0f);
-    glVertex2f(-7.0f,5.0f);
-    glVertex2f(-7.0f,2.0f);
-    glVertex2f(-8.0f,2.0f);
-    glEnd();
+    // fingerprint 2 draw
+    drawFingerPrint2();
 
-       //fingerprint1  display
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(-7.75f,4.50f);
-    glVertex2f(-7.25f,4.50f);
-    glVertex2f(-7.25f,4.25f);
-    glVertex2f(-7.75f,4.25f);
-    glEnd();
-
-    //finger print1 position
-
-
-    glBegin(GL_POLYGON);
-    glColor3ub(9, 230, 212);
-    glVertex2f(-7.62f,3.00f);
-    glVertex2f(-7.33f,3.00f);
-    glVertex2f(-7.33f,2.50f);
-    glVertex2f(-7.62f,2.50f);
-    glEnd();
-
-      //fingerprint 2
-    glBegin(GL_POLYGON);
-    glColor3ub(37, 48, 47);
-    glVertex2f(18.0f,5.0f);
-    glVertex2f(19.0f,5.0f);
-    glVertex2f(19.0f,2.0f);
-    glVertex2f(18.0f,2.0f);
-    glEnd();
-    //finer print 2 display
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(18.25f,4.50f);
-    glVertex2f(18.75f,4.50f);
-    glVertex2f(18.75f,4.25f);
-    glVertex2f(18.25f,4.25f);
-    glEnd();
-    //finger print2 position
-
-
-    glBegin(GL_POLYGON);
-    glColor3ub(9, 230, 212);
-    glVertex2f(18.33f,3.00f);
-    glVertex2f(18.62f,3.00f);
-    glVertex2f(18.62f,2.50f);
-    glVertex2f(18.33f,2.50f);
-    glEnd();
 
     // draw dustbin
     drawDustbin();
 
     //floor
-    glBegin(GL_POLYGON);
-    glColor3ub(47, 62, 66);
-    glVertex2f(-20.0f,-10.0f);
-    glVertex2f(20.0f,-10.0f);
-    glVertex2f(20.0f,-20.0f);
-    glVertex2f(-20.0f,-20.0f);
-    glEnd();
+    drawFloor();
 }
 
 void gunShotSound() {
@@ -424,54 +450,15 @@ void background2(){
     // Draw left door
     drawLeftDoor();
 
-    //fingerprint
-    glBegin(GL_POLYGON);
-    glColor3ub(37, 48, 47);
-    glVertex2f(-8.0f,5.0f);
-    glVertex2f(-7.0f,5.0f);
-    glVertex2f(-7.0f,2.0f);
-    glVertex2f(-8.0f,2.0f);
-    glEnd();
+    // draw fingerprint 1
+    drawFingerPrint1();
 
-    //fingerprint1  display
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(-7.75f,4.50f);
-    glVertex2f(-7.25f,4.50f);
-    glVertex2f(-7.25f,4.25f);
-    glVertex2f(-7.75f,4.25f);
-    glEnd();
-
-    //finger print1 position
-    glBegin(GL_POLYGON);
-    glColor3ub(9, 230, 212);
-    glVertex2f(-7.62f,3.00f);
-    glVertex2f(-7.33f,3.00f);
-    glVertex2f(-7.33f,2.50f);
-    glVertex2f(-7.62f,2.50f);
-    glEnd();
 
     // draw dustbin
     drawDustbin();
 
-    //fire box
-    glBegin(GL_POLYGON);
-    glColor3ub(219, 15, 36);
-    glVertex2f(9.0f,6.00f);
-    glVertex2f(12.00f,6.00f);
-    glVertex2f(12.00f,3.00f);
-    glVertex2f(9.00f,3.00f);
-    glEnd();
-
-    //fireboxsmall
-    glBegin(GL_POLYGON);
-    glColor3ub(47, 62, 66);
-    glVertex2f(10.0f,5.00f);
-    glVertex2f(11.00f,5.00f);
-    glVertex2f(11.00f,4.00f);
-    glVertex2f(10.00f,4.00f);
-    glEnd();
-
+    // draw firebox
+    drawFireBox();
 
     // Drawing noticeboard
     drawNoticeBoard(4, 84, 77);
@@ -492,32 +479,11 @@ void background3() {
     // Left door
     drawLeftDoor();
 
-    //fingerprint
-    glBegin(GL_POLYGON);
-    glColor3ub(37, 48, 47);
-    glVertex2f(-8.0f,5.0f);
-    glVertex2f(-7.0f,5.0f);
-    glVertex2f(-7.0f,2.0f);
-    glVertex2f(-8.0f,2.0f);
-    glEnd();
 
-    //fingerprint1  display
-    glBegin(GL_POLYGON);
-    glColor3ub(205, 209, 206);
-    glVertex2f(-7.75f,4.50f);
-    glVertex2f(-7.25f,4.50f);
-    glVertex2f(-7.25f,4.25f);
-    glVertex2f(-7.75f,4.25f);
-    glEnd();
 
-    //finger print1 position
-    glBegin(GL_POLYGON);
-    glColor3ub(9, 230, 212);
-    glVertex2f(-7.62f,3.00f);
-    glVertex2f(-7.33f,3.00f);
-    glVertex2f(-7.33f,2.50f);
-    glVertex2f(-7.62f,2.50f);
-    glEnd();
+    // draw finger print
+    drawFingerPrint1();
+
 
     //bench big back
     glBegin(GL_POLYGON);
