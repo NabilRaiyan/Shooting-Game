@@ -118,6 +118,37 @@ void drawNoticeBoard(float r, float g, float b){
 
 }
 
+void drawDustbin(){
+
+      //dustbin trinagle
+    glBegin(GL_POLYGON);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex2f(-3.0f,0.0f);
+    glVertex2f(-2.0f,1.0f);
+    glVertex2f(-1.0f,1.0f);
+    glVertex2f(0.0f,0.0f);
+    glEnd();
+
+    //dustbin big rectangle
+    glBegin(GL_POLYGON);
+    glColor3ub(33, 156, 61);
+    glVertex2f(-3.0f,0.0f);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-10.0f);
+    glVertex2f(-3.0f,-10.0f);
+    glEnd();
+
+    //dustbin midlle rectangle
+
+    glBegin(GL_POLYGON);
+    glColor3ub(256, 256, 256);
+    glVertex2f(-2.0f,-2.0f);
+    glVertex2f(-1.0f,-2.0f);
+    glVertex2f(-1.0f,-3.0f);
+    glVertex2f(-2.0f,-3.0f);
+    glEnd();
+}
+
 void drawWall(float r, float g, float b){
      // Wall color
     glBegin(GL_POLYGON);
@@ -363,37 +394,8 @@ void background() {
     glVertex2f(18.33f,2.50f);
     glEnd();
 
-
-
-    //dustbin trinagle
-    glBegin(GL_POLYGON);
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex2f(-3.0f,0.0f);
-    glVertex2f(-2.0f,1.0f);
-    glVertex2f(-1.0f,1.0f);
-    glVertex2f(0.0f,0.0f);
-    glEnd();
-
-    //dustbin big rectangle
-    glBegin(GL_POLYGON);
-    glColor3ub(33, 156, 61);
-    glVertex2f(-3.0f,0.0f);
-    glVertex2f(0.0f,0.0f);
-    glVertex2f(0.0f,-10.0f);
-    glVertex2f(-3.0f,-10.0f);
-    glEnd();
-
-    //dustbin midlle rectangle
-
-    glBegin(GL_POLYGON);
-    glColor3ub(256, 256, 256);
-    glVertex2f(-2.0f,-2.0f);
-    glVertex2f(-1.0f,-2.0f);
-    glVertex2f(-1.0f,-3.0f);
-    glVertex2f(-2.0f,-3.0f);
-    glEnd();
-
-
+    // draw dustbin
+    drawDustbin();
 
     //floor
     glBegin(GL_POLYGON);
@@ -449,70 +451,8 @@ void background2(){
     glVertex2f(-7.62f,2.50f);
     glEnd();
 
-    //bench big back
-     glBegin(GL_POLYGON);
-   glColor3ub(96, 133, 158);
-    glVertex2f(5.0f,-7.0f);
-    glVertex2f(4.0f,-2.0f);
-    glVertex2f(18.0f,-2.0f);
-    glVertex2f(17.0f,-7.0f);
-    glEnd();
-
-    //bench midle rect
-    glBegin(GL_POLYGON);
-    glColor3ub(60, 113, 166);
-    glVertex2f(4.0f,-7.0f);
-    glVertex2f(18.0f,-7.0f);
-    glVertex2f(18.0f,-8.0f);
-    glVertex2f(4.0f,-8.0f);
-    glEnd();
-
-    //rect bench
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(4.00f,-7.00f);
-    glVertex2f(18.00f,-7.00f);
-    glVertex2f(18.00f,-8.00f);
-    glVertex2f(4.00f,-8.00f);
-    glEnd();
-
-
-
-   //1legbench
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(4.00f,-8.00f);
-    glVertex2f(5.00f,-8.00f);
-    glVertex2f(6.00f,-11.00f);
-    glVertex2f(5.00f,-11.00f);
-    glEnd();
-
-    //2leg
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(6.00f,-8.00f);
-    glVertex2f(6.75f,-8.00f);
-    glVertex2f(7.25f,-11.00f);
-    glVertex2f(6.50f,-11.00f);
-    glEnd();
-
-    //3rdleg
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(15.25f,-8.00f);
-    glVertex2f(16.00f,-8.00f);
-    glVertex2f(15.5f,-11.00f);
-    glVertex2f(14.75f,-11.00f);
-    glEnd();
-
-    //4th leg
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(17.0f,-8.00f);
-    glVertex2f(18.00f,-8.00f);
-    glVertex2f(17.25f,-11.00f);
-    glVertex2f(16.25f,-11.00f);
-    glEnd();
+    // draw dustbin
+    drawDustbin();
 
     //fire box
     glBegin(GL_POLYGON);
@@ -532,18 +472,6 @@ void background2(){
     glVertex2f(10.00f,4.00f);
     glEnd();
 
-    glBegin(GL_LINES);
-    glColor3ub(23, 21, 21);
-    glVertex2f(4.50f,-4.00f);
-    glVertex2f(17.50f,-4.00f);
-    glEnd();
-
-    //line
-    glBegin(GL_LINES);
-    glColor3ub(23, 21, 21);
-    glVertex2f(4.75f,-5.50f);
-    glVertex2f(17.25f,-5.50f);
-    glEnd();
 
     // Drawing noticeboard
     drawNoticeBoard(4, 84, 77);
