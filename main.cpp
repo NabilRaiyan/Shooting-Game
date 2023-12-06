@@ -154,15 +154,15 @@ void levelUpSign(){
     glBegin(GL_POLYGON);
     glColor3ub(7, 48, 47);
     glVertex2f(17.0f,1.0f);
-    glVertex2f(19.0f,1.0f);
-    glVertex2f(19.0f,-1.0f);
+    glVertex2f(19.3f,1.0f);
+    glVertex2f(19.3f,-1.0f);
     glVertex2f(17.0f,-1.0f);
     glEnd();
 
     glColor3ub(255, 255, 255);  // White color for text
-    glRasterPos2f(17.3f, -0.3f);
+    glRasterPos2f(17.2f, -0.3f);
     for (char l : nextSemester){
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, l);
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, l);
      }
 
 
@@ -520,16 +520,41 @@ void drawBench(){
 // change color and text for enemy
 void changeColorText(){
     if (enemyCount < 5){
-                glColor3f(1.0f, 0.0f, 0.0f);  // Red color
-                course = "CG";
+                glColor3ub(255, 241, 118);  // Yellow color
+                if (level == 1){
+                    course = "Math1";
+                }
+                else if (level == 2){
+                    course = "Math2";
+                }
+                else if (level == 3){
+                    course = "Math3";
+                }
             }
             else if (enemyCount < 10){
-                glColor3f(0.0f, 1.0f, 0.0f);  // Green color
-                course = "Math";
+                glColor3ub(79, 195, 247);  // Sky blue color
+                if (level == 1){
+                    course = "C++";
+                }
+                else if (level == 2){
+                    course = "C#";
+                }
+                else if (level == 3){
+                    course = "Pyhton";
+                }
             }
             else if (enemyCount < 15){
-                glColor3f(0.0f, 0.0f, 1.0f);  // Blue color
-                course = "English";
+                glColor3ub(238, 238, 238);  // Grey color
+                if (level == 1){
+                    course = "English";
+                }
+                else if (level == 2){
+                    course = "JAVA";
+                }
+                else if (level == 3){
+                    course = "ADBMS";
+                }
+
             }
 }
 
@@ -719,8 +744,6 @@ void update(int value) {
 
             // Increase enemy count
             enemyCount++;
-
-
             if (enemyCount >= 15) {
                 // Reset the count after 15 enemies
                 enemyCount = 0;
