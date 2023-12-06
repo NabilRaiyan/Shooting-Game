@@ -25,7 +25,7 @@ bool levelIncreased = false;
 int enemyCount = 0;
 
 int playerHealth = 3;
-float enemyMovementSpeed = 0.1f;
+float enemyMovementSpeed = 0.2f;
 
 
 
@@ -78,7 +78,7 @@ void checkCollision() {
 
              // Regenerate enemy at initial position
             enemyX[i] = 20.0f;
-            enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+            enemyY[i] = -30.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
         }
     }
 
@@ -89,17 +89,17 @@ void checkCollision() {
 //        playerX = -18.0f;
 //        playerY = -12.0f;
         level = 2;
-        enemyMovementSpeed = 0.2;
+        enemyMovementSpeed = 0.3;
 
     }
 
-    if (score > 30){
+    if (score > 20){
         //Sleep(1000);
 //      // Reset player position
 //      playerX = -18.0f;
 //      playerY = -12.0f;
         level = 3;
-        enemyMovementSpeed = 0.3;
+        enemyMovementSpeed = 0.4;
     }
 }
 
@@ -123,7 +123,7 @@ void checkPlayerCollision() {
             // Reset enemies
             for (int j = 0; j < numEnemies; ++j) {
                 enemyX[j] = 20.0f;
-                enemyY[j] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+                enemyY[j] = -30.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
             }
 
             // Check if player is out of health
@@ -495,33 +495,21 @@ void drawBench(){
     glEnd();
 }
 
-// Function to get the color based on enemy count
-void getEnemyColor(int count, float& r, float& g, float& b) {
-    if (count < 5) {
-        // First 5 enemies (Red)
-        r = 1.0f;
-        g = 0.0f;
-        b = 0.0f;
-    } else if (count < 10) {
-        // Next 5 enemies (Green)
-        r = 0.0f;
-        g = 1.0f;
-        b = 0.0f;
-    } else {
-        // Last 5 enemies (Blue)
-        r = 0.0f;
-        g = 0.0f;
-        b = 1.0f;
-    }
-}
 
 // Draw enemy, player and bullet
 
 void drawEnemy() {
     for (int i = 0; i < numEnemies; ++i) {
         if (enemyX[i] > -20.0f) {
-            float r, g, b;
-            getEnemyColor(enemyCount, r, g, b);
+            if (enemyCount < 5){
+                glColor3f(1.0f, 0.0f, 0.0f);  // Red color
+            }
+            else if (enemyCount < 10){
+                glColor3f(0.0f, 1.0f, 0.0f);  // Green color
+            }
+            else if (enemyCount < 15){
+                glColor3f(0.0f, 0.0f, 1.0f);  // Blue color
+            }
             glBegin(GL_POLYGON);
             glVertex2f(enemyX[i] + 1.0f, enemyY[i] - 3.0f);
             glVertex2f(enemyX[i] - 1.0f, enemyY[i] - 3.0f);
@@ -543,7 +531,7 @@ void drawEnemy() {
                 case 4: quizText = "Viva"; break;
             }
             for (char c : quizText) {
-                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, c);
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
             }
         }
     }
@@ -692,6 +680,8 @@ void update(int value) {
 
             // Increase enemy count
             enemyCount++;
+
+
             if (enemyCount >= 15) {
                 // Reset the count after 15 enemies
                 enemyCount = 0;
