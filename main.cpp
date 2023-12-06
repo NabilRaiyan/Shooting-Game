@@ -6,7 +6,7 @@
 #include <ctime>
 #include <cstdlib>
 #define PI 3.1416
-
+using namespace std;
 
 float playerX = -18.0f;
 float playerY = -12.0f;
@@ -26,7 +26,6 @@ int enemyCount = 0;
 
 int playerHealth = 3;
 float enemyMovementSpeed = 0.2f;
-
 
 
 const int numEnemies = 1;  // Adjust the number of enemies as needed
@@ -147,7 +146,8 @@ void levelUpSign(){
     glVertex2f(19.0f,-1.0f);
     glVertex2f(17.0f,-1.0f);
     glEnd();
-    renderBitmapString(17.2f, -0.3f, 0.0f, GLUT_BITMAP_HELVETICA_10, "Level Up");
+    renderBitmapString(17.1f, -0.3f, 0.0f, GLUT_BITMAP_HELVETICA_10, "Next Sem");
+
 
 }
 
@@ -774,8 +774,6 @@ int main(int argc, char** argv) {
     glutTimerFunc(25, update, 0);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     gluOrtho2D(-20.0, 20.0, -20.0, 20.0);
-
-
 
     // Seed for random number generation
     srand(static_cast<unsigned int>(time(nullptr)));
