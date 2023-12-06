@@ -22,6 +22,7 @@ int score = 0;
 
 int level = 1;
 bool levelIncreased = false;
+int enemyCount = 0;
 
 int playerHealth = 3;
 float enemyMovementSpeed = 0.1f;
@@ -494,21 +495,58 @@ void drawBench(){
     glEnd();
 }
 
+// Function to get the color based on enemy count
+void getEnemyColor(int count, float& r, float& g, float& b) {
+    if (count < 5) {
+        // First 5 enemies (Red)
+        r = 1.0f;
+        g = 0.0f;
+        b = 0.0f;
+    } else if (count < 10) {
+        // Next 5 enemies (Green)
+        r = 0.0f;
+        g = 1.0f;
+        b = 0.0f;
+    } else {
+        // Last 5 enemies (Blue)
+        r = 0.0f;
+        g = 0.0f;
+        b = 1.0f;
+    }
+}
+
 // Draw enemy, player and bullet
 
 void drawEnemy() {
     for (int i = 0; i < numEnemies; ++i) {
         if (enemyX[i] > -20.0f) {
+            float r, g, b;
+            getEnemyColor(enemyCount, r, g, b);
             glBegin(GL_POLYGON);
-            glColor3f(0.f, 0.0f, 1.0f);
             glVertex2f(enemyX[i] + 1.0f, enemyY[i] - 3.0f);
             glVertex2f(enemyX[i] - 1.0f, enemyY[i] - 3.0f);
             glVertex2f(enemyX[i] - 1.0f, enemyY[i] + 1.0f);
             glVertex2f(enemyX[i] + 1.0f, enemyY[i] + 1.0f);
             glEnd();
+
+
+
+              // Draw text on enemy
+            glColor3ub(0, 0, 0);
+            glRasterPos2f(enemyX[i] - 0.5f, enemyY[i] - 1.0f);
+            std::string quizText;
+            switch (enemyCount % 5) {
+                case 0: quizText = "Quiz1"; break;
+                case 1: quizText = "Quiz2"; break;
+                case 2: quizText = "Attendance"; break;
+                case 3: quizText = "Midterm"; break;
+                case 4: quizText = "Viva"; break;
+            }
+            for (char c : quizText) {
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, c);
+            }
         }
     }
-
 }
 
 void drawBullet() {
@@ -636,11 +674,11 @@ void background3() {
 }
 
 
-
+// Update function
 void update(int value) {
 
     if (isBulletActive) {
-        bulletX += 0.5f;
+        bulletX += 0.4f;
         if (bulletX > 20.0f) {
             isBulletActive = false;
         }
@@ -651,7 +689,15 @@ void update(int value) {
         if (enemyX[i] < -20.0f) {
             enemyX[i] = 20.0f;
             enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+
+            // Increase enemy count
+            enemyCount++;
+            if (enemyCount >= 15) {
+                // Reset the count after 15 enemies
+                enemyCount = 0;
+            }
         }
+
     }
 
     checkCollision();
@@ -660,6 +706,8 @@ void update(int value) {
     glutTimerFunc(5, update, 0);
 }
 
+
+// Display function
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     background();
