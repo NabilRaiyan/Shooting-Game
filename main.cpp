@@ -8,24 +8,34 @@
 #define PI 3.1416
 using namespace std;
 
+
+// Player position
 float playerX = -18.0f;
 float playerY = -12.0f;
 
+// bullet position
 float bulletX = 1.0f;
 float bulletY = 1.0f;
 
+// player, enemy, bullet active flag
 bool isBulletActive = false;
 bool isPlayerMoving = true;
 bool isEnemyActive = false;
 
+// score, level, enemy count, player health count
 int score = 0;
-
 int level = 1;
 bool levelIncreased = false;
 int enemyCount = 0;
-
 int playerHealth = 3;
+
+// enemy movement speed
 float enemyMovementSpeed = 0.2f;
+
+// Course, semester up text
+std::string course = "";
+std::string nextSemester = "2nd Sem";
+
 
 
 const int numEnemies = 1;  // Adjust the number of enemies as needed
@@ -88,6 +98,7 @@ void checkCollision() {
 //        playerX = -18.0f;
 //        playerY = -12.0f;
         level = 2;
+        nextSemester = "3rd Sem";
         enemyMovementSpeed = 0.3;
 
     }
@@ -98,6 +109,7 @@ void checkCollision() {
 //      playerX = -18.0f;
 //      playerY = -12.0f;
         level = 3;
+        nextSemester = "4th Sem";
         enemyMovementSpeed = 0.4;
     }
 }
@@ -146,7 +158,13 @@ void levelUpSign(){
     glVertex2f(19.0f,-1.0f);
     glVertex2f(17.0f,-1.0f);
     glEnd();
-    renderBitmapString(17.1f, -0.3f, 0.0f, GLUT_BITMAP_HELVETICA_10, "Next Sem");
+
+    glColor3ub(255, 255, 255);  // White color for text
+    glRasterPos2f(17.3f, -0.3f);
+    for (char l : nextSemester){
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_10, l);
+     }
+
 
 
 }
@@ -498,16 +516,20 @@ void drawBench(){
 }
 
 
+
 // change color and text for enemy
 void changeColorText(){
     if (enemyCount < 5){
                 glColor3f(1.0f, 0.0f, 0.0f);  // Red color
+                course = "CG";
             }
             else if (enemyCount < 10){
                 glColor3f(0.0f, 1.0f, 0.0f);  // Green color
+                course = "Math";
             }
             else if (enemyCount < 15){
                 glColor3f(0.0f, 0.0f, 1.0f);  // Blue color
+                course = "English";
             }
 }
 
@@ -526,9 +548,9 @@ void drawEnemy() {
             glVertex2f(enemyX[i] + 1.3f, enemyY[i] + 1.0f);
             glEnd();
 
-              // Draw text on enemy
+              // Draw evaluation text on enemy
             glColor3ub(0, 0, 0);
-            glRasterPos2f(enemyX[i] - 1.0f, enemyY[i] - 1.0f);
+            glRasterPos2f(enemyX[i] - 1.0f, enemyY[i] - 1.9f);
             std::string Text;
             switch (enemyCount % 5) {
                 case 0: Text = "Quiz1"; break;
@@ -540,6 +562,13 @@ void drawEnemy() {
             for (char c : Text) {
                 glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
 
+            }
+
+            // Display course text on the enemy
+            glColor3ub(0, 0, 0);  // Black color for text
+            glRasterPos2f(enemyX[i] - 1.0f, enemyY[i] - 0.4f);
+            for (char f : course){
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, f);
             }
         }
     }
@@ -726,23 +755,23 @@ void display() {
     drawEnemy();
 
     // Render text and other UI elements
-    renderBitmapString(-0.2f, 12.0f, 0.0f, GLUT_BITMAP_HELVETICA_12, "Notice Board");
+    renderBitmapString(-0.2f, 12.0f, 0.0f, GLUT_BITMAP_9_BY_15, "Notice Board");
     glRasterPos2f(-0.2f, 10.0f);
     std::string scoreText = "Score: " + std::to_string(score);
     for (char c : scoreText) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
     }
 
     glRasterPos2f(-0.2f, 8.0f);
-    std::string levelText = "Level: " + std::to_string(level);
+    std::string levelText = "Semester: " + std::to_string(level);
     for (char c : levelText) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
     }
 
      glRasterPos2f(-0.2f, 6.0f);
     std::string playerHealthText = "Health: " + std::to_string(playerHealth);
     for (char c : playerHealthText) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
     }
 
     glutSwapBuffers();
