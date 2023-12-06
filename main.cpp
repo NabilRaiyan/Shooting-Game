@@ -131,7 +131,7 @@ void checkPlayerCollision() {
                 playerDeathSound();
                 Sleep(1000);
                 std::cout << "Game over! Player is out of health." << std::endl;
-                exit(0);  // Exit the game or handle game over state as needed
+                //exit(0);  // Exit the game or handle game over state as needed
             }
         }
     }
@@ -521,7 +521,7 @@ void drawEnemy() {
 
               // Draw text on enemy
             glColor3ub(0, 0, 0);
-            glRasterPos2f(enemyX[i] - 0.5f, enemyY[i] - 1.0f);
+            glRasterPos2f(enemyX[i] - 0.9f, enemyY[i] - 1.0f);
             std::string quizText;
             switch (enemyCount % 5) {
                 case 0: quizText = "Quiz1"; break;
