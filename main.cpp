@@ -254,6 +254,8 @@ void drawFireBox(){
     glEnd();
 }
 
+// Creating dustbin
+
 void drawDustbin(){
 
       //dustbin trinagle
@@ -496,12 +498,9 @@ void drawBench(){
 }
 
 
-// Draw enemy, player and bullet
-
-void drawEnemy() {
-    for (int i = 0; i < numEnemies; ++i) {
-        if (enemyX[i] > -20.0f) {
-            if (enemyCount < 5){
+// change color and text for enemy
+void changeColorText(){
+    if (enemyCount < 5){
                 glColor3f(1.0f, 0.0f, 0.0f);  // Red color
             }
             else if (enemyCount < 10){
@@ -510,33 +509,43 @@ void drawEnemy() {
             else if (enemyCount < 15){
                 glColor3f(0.0f, 0.0f, 1.0f);  // Blue color
             }
+}
+
+// Draw enemy, player and bullet
+
+void drawEnemy() {
+    for (int i = 0; i < numEnemies; ++i) {
+        if (enemyX[i] > -20.0f) {
+
+            // Changing color of enemy
+            changeColorText();
             glBegin(GL_POLYGON);
-            glVertex2f(enemyX[i] + 1.0f, enemyY[i] - 3.0f);
-            glVertex2f(enemyX[i] - 1.0f, enemyY[i] - 3.0f);
-            glVertex2f(enemyX[i] - 1.0f, enemyY[i] + 1.0f);
-            glVertex2f(enemyX[i] + 1.0f, enemyY[i] + 1.0f);
+            glVertex2f(enemyX[i] + 1.3f, enemyY[i] - 3.0f);
+            glVertex2f(enemyX[i] - 1.3f, enemyY[i] - 3.0f);
+            glVertex2f(enemyX[i] - 1.3f, enemyY[i] + 1.0f);
+            glVertex2f(enemyX[i] + 1.3f, enemyY[i] + 1.0f);
             glEnd();
-
-
 
               // Draw text on enemy
             glColor3ub(0, 0, 0);
-            glRasterPos2f(enemyX[i] - 0.9f, enemyY[i] - 1.0f);
-            std::string quizText;
+            glRasterPos2f(enemyX[i] - 1.0f, enemyY[i] - 1.0f);
+            std::string Text;
             switch (enemyCount % 5) {
-                case 0: quizText = "Quiz1"; break;
-                case 1: quizText = "Quiz2"; break;
-                case 2: quizText = "Attendance"; break;
-                case 3: quizText = "Midterm"; break;
-                case 4: quizText = "Viva"; break;
+                case 0: Text = "Quiz1"; break;
+                case 1: Text = "Quiz2"; break;
+                case 2: Text = "Attend"; break;
+                case 3: Text = "Viva"; break;
+                case 4: Text = "Exam"; break;
             }
-            for (char c : quizText) {
+            for (char c : Text) {
                 glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+
             }
         }
     }
 }
 
+// drawing bullet
 void drawBullet() {
     if (isBulletActive) {
         glColor3f(1.0f, 1.0f, 0.0f);
@@ -549,6 +558,7 @@ void drawBullet() {
     }
 }
 
+// drawing player
 void drawPlayer() {
     glColor3f(1.0f, 0.5f, 0.0f);
     glBegin(GL_QUADS);
