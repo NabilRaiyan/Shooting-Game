@@ -11,7 +11,8 @@ using namespace std;
 
 // Player position
 float playerX = -18.0f;
-float playerY = -12.0f;
+float playerY = -11.0f;
+
 
 // bullet position
 float bulletX = 1.0f;
@@ -129,7 +130,7 @@ void checkPlayerCollision() {
 
             // Reset player position
             playerX = -18.0f;
-            playerY = -12.0f;
+            playerY = -11.0f;
 
             // Reset enemies
             for (int j = 0; j < numEnemies; ++j) {
@@ -147,6 +148,7 @@ void checkPlayerCollision() {
         }
     }
 }
+
 
 
 // Level up sign
@@ -331,11 +333,20 @@ void drawWall(float r, float g, float b){
 
 // drawing floor
 void drawFloor(){
-     //floor
+    //floor upper part
     glBegin(GL_POLYGON);
-    glColor3ub(47, 62, 66);
+    glColor3ub(108, 120, 98);
     glVertex2f(-20.0f,-10.0f);
     glVertex2f(20.0f,-10.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+    //floor lower part
+    glBegin(GL_POLYGON);
+    glColor3ub(50, 61, 47);
+    glVertex2f(-20.0f,-17.0f);
+    glVertex2f(20.0f,-17.0f);
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
