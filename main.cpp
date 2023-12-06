@@ -169,6 +169,7 @@ void levelUpSign(){
 
 }
 
+// drawing notice board
 void drawNoticeBoard(float r, float g, float b){
       // noticeboard border
     glBegin(GL_POLYGON);
@@ -305,6 +306,7 @@ void drawDustbin(){
     glEnd();
 }
 
+// drawing wall
 void drawWall(float r, float g, float b){
      // Wall color
     glBegin(GL_POLYGON);
@@ -327,6 +329,7 @@ void drawWall(float r, float g, float b){
 
 }
 
+// drawing floor
 void drawFloor(){
      //floor
     glBegin(GL_POLYGON);
@@ -339,6 +342,7 @@ void drawFloor(){
 
 }
 
+// drawing left door
 void drawLeftDoor(){
     //door 1
     glBegin(GL_POLYGON);
@@ -800,6 +804,7 @@ void display() {
     glutSwapBuffers();
 }
 
+// event handler
 void handleKeypress(unsigned char key, int x, int y) {
     switch (key) {
     case 'a':
@@ -826,6 +831,7 @@ void handleKeypress(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
+// main function
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(1000, 550);
