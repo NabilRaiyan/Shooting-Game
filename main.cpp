@@ -1,3 +1,9 @@
+//TODO-1:--->> Already Created a levelUpBackground() which will appear in between each level whenever we jump from one to another
+//TODO-2:--->> Create a cover page and menu for game and also use sound on off system
+
+
+
+
 #include <iostream>
 #include <GL/glut.h>
 #include <windows.h>
