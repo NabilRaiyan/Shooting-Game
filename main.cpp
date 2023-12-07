@@ -37,6 +37,8 @@ float enemyMovementSpeed = 0.2f;
 std::string course = "";
 std::string nextSemester = "2nd Sem";
 
+std::string levelUpText = "Congratulation! You have successfully completed the semester and also welcome to the new semester!";
+
 
 
 const int numEnemies = 1;  // Adjust the number of enemies as needed
@@ -73,6 +75,27 @@ void playerHitByEnemySound(){
 // player death sound
 void playerDeathSound(){
     sndPlaySound("playerDeathSound.wav", SND_ASYNC);
+}
+
+// background for level up in between levels
+void levelUpBackground(){
+
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // screen color
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 0, 0);
+    glVertex2f(-20.0f,20.0f);
+    glVertex2f(20.0f,20.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+//    glRasterPos2f(0.0f, 0.0f);
+//    for (char c : levelUpText) {
+//        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
+//    }
+
 }
 
 
@@ -636,11 +659,6 @@ void drawPlayer() {
     glEnd();
 }
 
-
-// background for level up in between levels
-void levelUpBackground(){
-
-}
 
 // draw Scence
 void background() {
