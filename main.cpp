@@ -637,6 +637,11 @@ void drawPlayer() {
 }
 
 
+// background for level up in between levels
+void levelUpBackground(){
+
+}
+
 // draw Scence
 void background() {
     glClear(GL_COLOR_BUFFER_BIT);
