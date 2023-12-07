@@ -800,6 +800,7 @@ void display() {
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
     }
 
+    // writing semester on screen
     glRasterPos2f(-0.2f, 8.0f);
     std::string levelText = "Semester: " + std::to_string(level);
     for (char c : levelText) {
