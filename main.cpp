@@ -721,8 +721,6 @@ void background3() {
     // Left door
     drawLeftDoor();
 
-
-
     // draw finger print
     drawFingerPrint1();
 
@@ -767,6 +765,8 @@ void update(int value) {
 
     }
 
+
+    // Calling collision functions
     checkCollision();
     checkPlayerCollision();
     glutPostRedisplay();
