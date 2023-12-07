@@ -807,6 +807,7 @@ void display() {
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
     }
 
+    // Writing player health on screen
      glRasterPos2f(-0.2f, 6.0f);
     std::string playerHealthText = "Health: " + std::to_string(playerHealth);
     for (char c : playerHealthText) {
