@@ -166,10 +166,8 @@ void levelUpSign(){
     for (char l : nextSemester){
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, l);
      }
-
-
-
 }
+
 
 // drawing notice board
 void drawNoticeBoard(float r, float g, float b){
