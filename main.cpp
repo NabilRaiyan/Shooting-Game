@@ -216,8 +216,7 @@ void drawNoticeBoard(float r, float g, float b){
 // Draw Fingerprint 1
 
 void drawFingerPrint1(){
-
-      //fingerprint1
+    //fingerprint1
     glBegin(GL_POLYGON);
     glColor3ub(37, 48, 47);
     glVertex2f(-8.0f,5.0f);
