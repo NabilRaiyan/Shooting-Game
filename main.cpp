@@ -43,7 +43,6 @@ float enemyMovementSpeed = 0.2f;
 std::string course = "";
 std::string nextSemester = "2nd Sem";
 
-std::string levelUpText = "Congratulation! You have successfully completed the semester and also welcome to the new semester!";
 
 
 
@@ -97,10 +96,6 @@ void levelUpBackground(){
     glVertex2f(-20.0f,-20.0f);
     glEnd();
 
-//    glRasterPos2f(0.0f, 0.0f);
-//    for (char c : levelUpText) {
-//        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
-//    }
 
 }
 
