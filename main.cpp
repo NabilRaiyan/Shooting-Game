@@ -61,7 +61,7 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 }
 
 
-// All Sound
+// All Sounds
 
 // Gun shoot sound by player
 void gunShotSound() {
