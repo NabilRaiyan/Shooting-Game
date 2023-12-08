@@ -63,7 +63,7 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 
 // All Sound
 
-// Gun shoot sound bu player
+// Gun shoot sound by player
 void gunShotSound() {
     sndPlaySound("gun_shoot_sound.wav", SND_ASYNC);
 }
