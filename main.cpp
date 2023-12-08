@@ -173,8 +173,6 @@ void checkPlayerCollision() {
     }
 }
 
-
-
 // Level up sign
 void levelUpSign(){
     glBegin(GL_POLYGON);
