@@ -275,7 +275,7 @@ void drawFingerPrint2(){
 
 // drawFirebox
 void drawFireBox(){
-      //fire box
+    //fire box
     glBegin(GL_POLYGON);
     glColor3ub(219, 15, 36);
     glVertex2f(9.0f,6.00f);
@@ -297,8 +297,7 @@ void drawFireBox(){
 // Creating dustbin
 
 void drawDustbin(){
-
-      //dustbin trinagle
+    //dustbin trinagle
     glBegin(GL_POLYGON);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex2f(-3.0f,0.0f);
@@ -317,7 +316,6 @@ void drawDustbin(){
     glEnd();
 
     //dustbin midlle rectangle
-
     glBegin(GL_POLYGON);
     glColor3ub(256, 256, 256);
     glVertex2f(-2.0f,-2.0f);
@@ -329,7 +327,7 @@ void drawDustbin(){
 
 // drawing wall
 void drawWall(float r, float g, float b){
-     // Wall color
+    // Wall color
     glBegin(GL_POLYGON);
     glColor3ub(r, g, b);
     glVertex2f(-20.0f,20.0f);
