@@ -467,12 +467,8 @@ void drawRightDoor(float r, float g, float b){
     glEnd();
 
 }
-// Draw bench
+// Draw bench function
 void drawBench(){
-
-
-
-
     //bench big back
     glBegin(GL_POLYGON);
     glColor3ub(96, 133, 158);
