@@ -496,8 +496,8 @@ void drawBench(){
     glVertex2f(6.75f,-8.00f);
     glVertex2f(6.75f,-11.00f);
     glEnd();
-    //2ndleg
 
+    //2nd leg
     glBegin(GL_POLYGON);
     glColor3ub(96, 133, 158);
     glVertex2f(15.25f,-11.00f);
@@ -512,11 +512,11 @@ void drawBench(){
     glVertex2f(6.00f,-4.00f);
     glVertex2f(16.0f,-4.00f);
     glEnd();
-    //line 2nd
 
+    //line 2nd
     glBegin(GL_LINES);
     glColor3ub(23, 21, 21);
-glVertex2f(6.00f,-5.50f);
+    glVertex2f(6.00f,-5.50f);
     glVertex2f(16.0f,-5.50f);
     glEnd();
 
