@@ -470,81 +470,61 @@ void drawRightDoor(float r, float g, float b){
 // Draw bench
 void drawBench(){
 
+
+
+
     //bench big back
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(5.0f,-7.0f);
-    glVertex2f(4.0f,-2.0f);
-    glVertex2f(18.0f,-2.0f);
-    glVertex2f(17.0f,-7.0f);
+     glBegin(GL_POLYGON);
+   glColor3ub(96, 133, 158);
+    glVertex2f(6.0f,-7.0f);
+    glVertex2f(6.0f,-2.0f);
+    glVertex2f(16.0f,-2.0f);
+    glVertex2f(16.0f,-7.0f);
 
     glEnd();
-    //bench midle rect
+//bench midle rect
     glBegin(GL_POLYGON);
-    glColor3ub(60, 113, 166);
-    glVertex2f(4.0f,-7.0f);
-    glVertex2f(18.0f,-7.0f);
-    glVertex2f(18.0f,-8.0f);
-    glVertex2f(4.0f,-8.0f);
-    glEnd();
-
-    //rect bench
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(4.00f,-7.00f);
-    glVertex2f(18.00f,-7.00f);
-    glVertex2f(18.00f,-8.00f);
-    glVertex2f(4.00f,-8.00f);
+   glColor3ub(60, 113, 166);
+    glVertex2f(5.50f,-8.0f);
+    glVertex2f(5.50f,-7.0f);
+    glVertex2f(16.50f,-7.0f);
+    glVertex2f(16.50f,-8.0f);
     glEnd();
 
 
-
-   //1legbench
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(4.00f,-8.00f);
-    glVertex2f(5.00f,-8.00f);
-    glVertex2f(6.00f,-11.00f);
-    glVertex2f(5.00f,-11.00f);
-    glEnd();
-    //2leg
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(6.00f,-8.00f);
+    //1leg
+        glBegin(GL_POLYGON);
+     glColor3ub(96, 133, 158);
+    glVertex2f(6.25f,-11.00f);
+    glVertex2f(6.25f,-8.00f);
     glVertex2f(6.75f,-8.00f);
-    glVertex2f(7.25f,-11.00f);
-    glVertex2f(6.50f,-11.00f);
+    glVertex2f(6.75f,-11.00f);
     glEnd();
+    //2ndleg
 
-    //3rd leg
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
+        glBegin(GL_POLYGON);
+     glColor3ub(96, 133, 158);
+    glVertex2f(15.25f,-11.00f);
     glVertex2f(15.25f,-8.00f);
-    glVertex2f(16.00f,-8.00f);
-    glVertex2f(15.5f,-11.00f);
-    glVertex2f(14.75f,-11.00f);
+    glVertex2f(15.75f,-8.00f);
+    glVertex2f(15.75f,-11.00f);
     glEnd();
-    //4th leg
-    glBegin(GL_POLYGON);
-    glColor3ub(96, 133, 158);
-    glVertex2f(17.0f,-8.00f);
-    glVertex2f(18.00f,-8.00f);
-    glVertex2f(17.25f,-11.00f);
-    glVertex2f(16.25f,-11.00f);
+
+    //bench line
+  glBegin(GL_LINES);
+ glColor3ub(23, 21, 21);
+glVertex2f(6.00f,-4.00f);
+    glVertex2f(16.0f,-4.00f);
+    glEnd();
+    //line 2nd
+
+glBegin(GL_LINES);
+ glColor3ub(23, 21, 21);
+glVertex2f(6.00f,-5.50f);
+    glVertex2f(16.0f,-5.50f);
     glEnd();
 
 
-    glBegin(GL_LINES);
-    glColor3ub(23, 21, 21);
-    glVertex2f(4.50f,-4.00f);
-    glVertex2f(17.50f,-4.00f);
-    glEnd();
-    //line
-    glBegin(GL_LINES);
-    glColor3ub(23, 21, 21);
-    glVertex2f(4.75f,-5.50f);
-    glVertex2f(17.25f,-5.50f);
-    glEnd();
 }
 
 
