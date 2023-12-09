@@ -520,10 +520,7 @@ void drawBench(){
     glVertex2f(16.0f,-5.50f);
     glEnd();
 
-
 }
-
-
 
 // change color and text for enemy
 void changeColorText(){
@@ -581,7 +578,7 @@ void drawEnemy() {
             glVertex2f(enemyX[i] + 1.3f, enemyY[i] + 1.0f);
             glEnd();
 
-              // Draw evaluation text on enemy
+            // Draw evaluation text on enemy
             glColor3ub(0, 0, 0);
             glRasterPos2f(enemyX[i] - 1.0f, enemyY[i] - 1.9f);
             std::string Text;
@@ -632,7 +629,7 @@ void drawPlayer() {
 }
 
 
-// draw Scence
+// draw Scene
 void background() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(0.5);
