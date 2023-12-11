@@ -743,7 +743,7 @@ void update(int value) {
         enemyX[i] -= enemyMovementSpeed;
         if (enemyX[i] < -20.0f) {
             enemyX[i] = 20.0f;
-            enemyY[i] = -12.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+            enemyY[i] = -11.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
 
             // Increase enemy count
             enemyCount++;
