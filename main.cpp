@@ -167,7 +167,7 @@ void checkPlayerCollision() {
                 playerDeathSound();
                 Sleep(1000);
                 std::cout << "Game over! Player is out of health." << std::endl;
-                //exit(0);  // Exit the game or handle game over state as needed
+                exit(0);  // Exit the game or handle game over state as needed
             }
         }
     }
