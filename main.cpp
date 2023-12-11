@@ -834,7 +834,12 @@ void handleKeypress(unsigned char key, int x, int y) {
         playerY += 0.5f;
         break;
     case 's':
-        playerY -= 0.5f;
+        if (playerY < -11.0f){
+            isPlayerMoving = false;
+        }
+        else{
+             playerY -= 0.5f;
+        }
     }
     glutPostRedisplay();
 }
