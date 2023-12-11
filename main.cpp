@@ -167,7 +167,7 @@ void checkPlayerCollision() {
                 playerDeathSound();
                 Sleep(1000);
                 std::cout << "Game over! Player is out of health." << std::endl;
-                exit(0);  // Exit the game or handle game over state as needed
+                //exit(0);  // Exit the game or handle game over state as needed
             }
         }
     }
@@ -821,7 +821,7 @@ void handleKeypress(unsigned char key, int x, int y) {
     case 'd':
         playerX += 0.5f;
         break;
-    case 's':
+    case 'h':
         if (!isBulletActive) {
             // Fire bullet
             bulletX = playerX;
@@ -830,6 +830,11 @@ void handleKeypress(unsigned char key, int x, int y) {
             gunShotSound();
         }
         break;
+    case 'w':
+        playerY += 0.5f;
+        break;
+    case 's':
+        playerY -= 0.5f;
     }
     glutPostRedisplay();
 }
