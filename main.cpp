@@ -9,6 +9,7 @@
 #include <ctime>
 #include <cstdlib>
 #define PI 3.1416
+#include <string>
 using namespace std;
 
 
@@ -36,11 +37,9 @@ int playerHealth = 3;
 // enemy movement speed
 float enemyMovementSpeed = 0.2f;
 
-
-
+// Game start
 bool isGameStarted = false;
 bool isSoundOn = true;
-
 
 // Course, semester up text
 std::string course = "";
@@ -63,6 +62,7 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 }
 
 
+
 // Function to display the game menu
 void gameMenu() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -74,7 +74,7 @@ void gameMenu() {
     renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. New Game");
 
     glRasterPos2f(-3.0f, 3.0f);
-    //renderBitmapString(-3.0f, 3.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. Sound: " + (isSoundOn ? "On" : "Off"));
+    renderBitmapString(-3.0f, 3.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. Sound");
 
     glRasterPos2f(-3.0f, 1.0f);
     renderBitmapString(-3.0f, 1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "3. Exit Game");
