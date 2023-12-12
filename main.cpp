@@ -41,6 +41,8 @@ float enemyMovementSpeed = 0.2f;
 bool isGameStarted = false;
 bool isSoundOn = true;
 
+bool showGameMenu = false;
+
 // Course, semester up text
 std::string course = "";
 std::string nextSemester = "2nd Sem";
@@ -805,7 +807,7 @@ void update(int value) {
         }
     }
 
-    if (isGameStarted){
+    if (isGameStarted && showGameMenu == false){
         for (int i = 0; i < numEnemies; ++i) {
             enemyX[i] -= enemyMovementSpeed;
             if (enemyX[i] < -20.0f) {
@@ -836,7 +838,11 @@ void update(int value) {
 
 // Display function
 void display() {
-    if (isGameStarted) {
+    if (showGameMenu == true && isGameStarted){
+        gameMenu();
+    }
+    else{
+        if (isGameStarted) {
         glClear(GL_COLOR_BUFFER_BIT);
         background();
 
@@ -879,6 +885,8 @@ void display() {
         // Display the game menu
         gameMenu();
     }
+    }
+
     glutSwapBuffers();
 
 }
@@ -896,6 +904,7 @@ void handleMenuKeypress(unsigned char key, int x, int y) {
         isSoundOn = !isSoundOn;
         if (isSoundOn) {
             isSoundOn = true;
+
         } else {
             isSoundOn = false;
         }
@@ -914,50 +923,54 @@ void handleMenuKeypress(unsigned char key, int x, int y) {
 }
 
 
-// event handler
+// event handler for player move and shooting
 void handleKeypress(unsigned char key, int x, int y) {
     if (isGameStarted){
 
-
-    switch (key) {
-    case 'a':
-        if (playerX < -18) {
-            isPlayerMoving = false;
-        }
-        else {
-            playerX -= 0.5f;
-        }
-        break;
-    case 'd':
-        playerX += 0.5f;
-        break;
-    case 'h':
-        if (!isBulletActive) {
-            // Fire bullet
-            bulletX = playerX;
-            bulletY = playerY;
-            isBulletActive = true;
-            if (isSoundOn == true){
-                gunShotSound();
+        switch (key) {
+        case 'a':
+            if (playerX < -18) {
+                isPlayerMoving = false;
             }
+            else {
+                playerX -= 0.5f;
+            }
+            break;
+        case 'd':
+            playerX += 0.5f;
+            break;
+        case 'f':
+            if (!isBulletActive) {
+                // Fire bullet
+                bulletX = playerX;
+                bulletY = playerY;
+                isBulletActive = true;
+                if (isSoundOn == true){
+                    gunShotSound();
+                }
+            }
+            break;
+        case 'w':
+            playerY += 0.5f;
+            break;
+        case 's':
+            if (playerY <= -11.0f){
+                isPlayerMoving = false;
+            }
+            else{
+                 playerY -= 0.5f;
+            }
+            break;
+        case 'b':
+            isGameStarted = false;
+            showGameMenu = !showGameMenu;
+            if (showGameMenu){
+                handleMenuKeypress(key, x, y);
+                //glutPostRedisplay();
+            }
+
+            break;
         }
-        break;
-    case 'w':
-        playerY += 0.5f;
-        break;
-    case 's':
-        if (playerY < -11.0f){
-            isPlayerMoving = false;
-        }
-        else{
-             playerY -= 0.5f;
-        }
-        break;
-    case 'b':
-        glutDestroyWindow(glutGetWindow());
-        gameMenu();
-        break;
-    }
     }else{
     // Handle menu-related keypress events
     handleMenuKeypress(key, x, y);
