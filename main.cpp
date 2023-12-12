@@ -102,10 +102,6 @@ void gameMenu() {
     glutSwapBuffers();
 }
 
-
-
-
-
 // All Sounds
 
 // Gun shoot sound by player
@@ -152,7 +148,13 @@ void checkCollision() {
     for (int i = 0; i < numEnemies; ++i) {
         if (isBulletActive && bulletX >= enemyX[i] - 1.0f && bulletX <= enemyX[i] + 1.0f && bulletY >= enemyY[i] - 3.0f && bulletY <= enemyY[i] + 1.0f) {
             std::cout << "Collision detected!" << std::endl;
-            enemyHitByBulletSound();
+            if (isSoundOn == true){
+                enemyHitByBulletSound();
+            }
+            else{
+                isSoundOn = false;
+            }
+
             score += 1;
             std::cout << "Score: " << score << std::endl;
             isBulletActive = false;
@@ -188,35 +190,52 @@ void checkCollision() {
 
 // Check collision of enemy with player
 void checkPlayerCollision() {
+    if (isGameStarted == true){
+        for (int i = 0; i < numEnemies; ++i) {
+            if (playerX - 1.0f <= enemyX[i] + 1.0f &&
+                playerX + 1.0f >= enemyX[i] - 1.0f &&
+                playerY - 5.0f <= enemyY[i] + 1.0f &&
+                playerY + 3.0f >= enemyY[i] - 4.0f) {
+                std::cout << "Player collided with an enemy!" << std::endl;
+                if (isSoundOn == true)
+                {
+                     playerHitByEnemySound();
+                }
+                else{
+                    isSoundOn = false;
+                }
 
-    for (int i = 0; i < numEnemies; ++i) {
-        if (playerX - 1.0f <= enemyX[i] + 1.0f &&
-            playerX + 1.0f >= enemyX[i] - 1.0f &&
-            playerY - 5.0f <= enemyY[i] + 1.0f &&
-            playerY + 3.0f >= enemyY[i] - 4.0f) {
-            std::cout << "Player collided with an enemy!" << std::endl;
-            playerHitByEnemySound();
-            playerHealth--;  // Reduce player health
-            std::cout << "Player Health: " << playerHealth << std::endl;
+                playerHealth--;  // Reduce player health
+                std::cout << "Player Health: " << playerHealth << std::endl;
 
-            // Reset player position
-            playerX = -18.0f;
-            playerY = -11.0f;
+                // Reset player position
+                playerX = -18.0f;
+                playerY = -11.0f;
 
-            // Reset enemies
-            for (int j = 0; j < numEnemies; ++j) {
-                enemyX[j] = 20.0f;
-                enemyY[j] = -30.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
-            }
+                // Reset enemies
+                for (int j = 0; j < numEnemies; ++j) {
+                    enemyX[j] = 20.0f;
+                    enemyY[j] = -30.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+                }
 
-            // Check if player is out of health
-            if (playerHealth <= 0) {
-                playerDeathSound();
-                Sleep(1000);
-                std::cout << "Game over! Player is out of health." << std::endl;
-                //exit(0);  // Exit the game or handle game over state as needed
+                // Check if player is out of health
+                if (playerHealth <= 0) {
+                        if (isSoundOn == true){
+                            playerDeathSound();
+                        }
+                        else{
+                            isSoundOn = false;
+                        }
+
+                    Sleep(1000);
+                    std::cout << "Game over! Player is out of health." << std::endl;
+                    //exit(0);  // Exit the game or handle game over state as needed
+                }
             }
         }
+    }
+    else{
+        gameMenu();
     }
 }
 
