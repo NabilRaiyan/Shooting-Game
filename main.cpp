@@ -838,7 +838,7 @@ void update(int value) {
 
 // Display function
 void display() {
-    if (showGameMenu == true && isGameStarted){
+    if (showGameMenu == true && isGameStarted == false){
         gameMenu();
     }
     else{
@@ -968,11 +968,10 @@ void handleKeypress(unsigned char key, int x, int y) {
                 handleMenuKeypress(key, x, y);
                 //glutPostRedisplay();
             }
-
             break;
         }
     }else{
-    // Handle menu-related keypress events
+    // Handle menu-related key press events
     handleMenuKeypress(key, x, y);
 }
     glutPostRedisplay();
