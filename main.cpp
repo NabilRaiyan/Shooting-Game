@@ -48,15 +48,12 @@ std::string course = "";
 std::string nextSemester = "2nd Sem";
 
 
-
-
-
 const int numEnemies = 1;  // Adjust the number of enemies as needed
 std::vector<float> enemyX(numEnemies, 0.0f);
 std::vector<float> enemyY(numEnemies, 0.0f);
 
 void renderBitmapString(float x, float y, float z, void* font, char* string) {
-    glColor3ub(255, 255, 255);
+    //glColor3ub(255, 255, 255);
     char* c;
     glRasterPos3f(x, y, z);
     for (c = string; *c != '\0'; c++) {
@@ -87,6 +84,7 @@ void gameMenu() {
 
     // Draw menu options
 
+    glColor3ub(255, 255, 255);
     glRasterPos2f(-8.0f, 10.0f);
     renderBitmapString(-8.0f, 10.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4 or 5)");
 
@@ -129,25 +127,6 @@ void playerHitByEnemySound(){
 void playerDeathSound(){
     sndPlaySound("playerDeathSound.wav", SND_ASYNC);
 }
-
-//// background for level up in between levels
-//void levelUpBackground(){
-//
-//    glClear(GL_COLOR_BUFFER_BIT);
-//
-//    // screen color
-//    glBegin(GL_POLYGON);
-//    glColor3ub(0, 0, 0);
-//    glVertex2f(-20.0f,20.0f);
-//    glVertex2f(20.0f,20.0f);
-//    glVertex2f(20.0f,-20.0f);
-//    glVertex2f(-20.0f,-20.0f);
-//    glEnd();
-//
-//
-//}
-
-
 
 // Check collision of bullet with enemy
 void checkCollision() {
@@ -194,6 +173,7 @@ void checkCollision() {
     }
 }
 
+
 // Check collision of enemy with player
 void checkPlayerCollision() {
     if (isGameStarted == true){
@@ -237,6 +217,10 @@ void checkPlayerCollision() {
                     std::cout << "Game over! Player is out of health." << std::endl;
                     //exit(0);  // Exit the game or handle game over state as needed
                 }
+            }
+            else if (enemyX[i] > -20.0f && enemyX[i] < -19.0f){
+                playerHealth--;
+
             }
         }
     }
@@ -407,6 +391,11 @@ void drawWall(float r, float g, float b){
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
+
+    // Back to the menu option
+    glRasterPos2f(-18.0f, 18.0f);
+    glColor3ub(0, 0, 0);
+    renderBitmapString(-19.0f, 18.0f, 0.0f, GLUT_BITMAP_HELVETICA_12, "Press b key to go back to the menu");
 
 
     // Wall lower part
@@ -860,6 +849,7 @@ void display() {
     drawBullet();
     drawEnemy();
 
+    glColor3ub(255, 255, 255);
     // Render text and other UI elements
     renderBitmapString(-0.2f, 12.0f, 0.0f, GLUT_BITMAP_9_BY_15, "Notice Board");
     glRasterPos2f(-0.2f, 10.0f);
