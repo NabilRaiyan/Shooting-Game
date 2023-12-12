@@ -621,7 +621,6 @@ void drawEnemy() {
             }
             for (char c : Text) {
                 glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
-
             }
 
             // Display course text on the enemy
@@ -657,7 +656,6 @@ void drawPlayer() {
     glVertex2f(playerX - 1.0f, playerY + 3.0f);
     glEnd();
 }
-
 
 // draw Scene
 void background() {
