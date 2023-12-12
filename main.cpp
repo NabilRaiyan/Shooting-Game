@@ -1,9 +1,6 @@
 //TODO-1:--->> Already Created a levelUpBackground() which will appear in between each level whenever we jump from one to another
 //TODO-2:--->> Create a cover page and menu for game and also use sound on off system
 
-
-
-
 #include <iostream>
 #include <GL/glut.h>
 #include <windows.h>
@@ -39,6 +36,12 @@ int playerHealth = 3;
 // enemy movement speed
 float enemyMovementSpeed = 0.2f;
 
+
+
+bool isGameStarted = false;
+bool isSoundOn = true;
+
+
 // Course, semester up text
 std::string course = "";
 std::string nextSemester = "2nd Sem";
@@ -58,6 +61,32 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
         glutBitmapCharacter(font, *c);
     }
 }
+
+
+// Function to display the game menu
+void gameMenu() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Draw menu options
+    glColor3ub(255, 255, 255);  // White color for text
+
+    glRasterPos2f(-3.0f, 5.0f);
+    renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. New Game");
+
+    glRasterPos2f(-3.0f, 3.0f);
+    //renderBitmapString(-3.0f, 3.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. Sound: " + (isSoundOn ? "On" : "Off"));
+
+    glRasterPos2f(-3.0f, 1.0f);
+    renderBitmapString(-3.0f, 1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "3. Exit Game");
+
+    glRasterPos2f(-3.0f, -1.0f);
+    renderBitmapString(-3.0f, -1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "4. Controls");
+
+    glutSwapBuffers();
+}
+
+
+
 
 
 // All Sounds
@@ -98,6 +127,7 @@ void levelUpBackground(){
 
 
 }
+
 
 
 // Check collision of bullet with enemy
@@ -766,8 +796,9 @@ void update(int value) {
 
 // Display function
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT);
-    background();
+    if (isGameStarted) {
+        glClear(GL_COLOR_BUFFER_BIT);
+        background();
 
 
     if (level == 2){
@@ -804,11 +835,47 @@ void display() {
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
     }
 
+    }else {
+        // Display the game menu
+        gameMenu();
+    }
     glutSwapBuffers();
+
 }
+
+
+
+// Function to handle menu keypress events
+void handleMenuKeypress(unsigned char key, int x, int y) {
+    switch (key) {
+    case '1':  // New Game
+        isGameStarted = true;
+        glutDisplayFunc(display);
+        break;
+    case '2':  // Toggle Sound On/Off
+        isSoundOn = !isSoundOn;
+        if (isSoundOn) {
+            // Turn on sound (if necessary)
+        } else {
+            // Turn off sound (if necessary)
+        }
+        break;
+    case '3':  // Exit Game
+        exit(0);
+        break;
+    case '4':  // Controls
+        // Implement control instructions display or handling
+        break;
+    }
+    glutPostRedisplay();
+}
+
 
 // event handler
 void handleKeypress(unsigned char key, int x, int y) {
+    if (isGameStarted){
+
+
     switch (key) {
     case 'a':
         if (playerX < -18) {
@@ -841,8 +908,13 @@ void handleKeypress(unsigned char key, int x, int y) {
              playerY -= 0.5f;
         }
     }
+    }else{
+    // Handle menu-related keypress events
+    handleMenuKeypress(key, x, y);
+}
     glutPostRedisplay();
 }
+
 
 // main function
 int main(int argc, char** argv) {
