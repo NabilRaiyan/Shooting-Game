@@ -1,5 +1,5 @@
-//TODO-1:--->> Already Created a levelUpBackground() which will appear in between each level whenever we jump from one to another
-//TODO-2:--->> Create a cover page and menu for game and also use sound on off system
+//TODO-1:--->> ADD cover page
+//TODO-2:--->> Implement game over, new level function
 
 #include <iostream>
 #include <GL/glut.h>
@@ -34,8 +34,9 @@ bool levelIncreased = false;
 int enemyCount = 0;
 int playerHealth = 3;
 
+
 // enemy movement speed
-float enemyMovementSpeed = 0.2f;
+float enemyMovementSpeed = 0.1f;
 
 // Game start
 bool isGameStarted = false;
@@ -149,6 +150,8 @@ void checkCollision() {
             enemyY[i] = -30.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
         }
     }
+
+
 
     // Increasing level from 1 to 2
      if (score > 10){
@@ -805,7 +808,6 @@ void update(int value) {
                 // Increase enemy count
                 enemyCount++;
                 if (enemyCount >= 15) {
-                    // Reset the count after 15 enemies
                     enemyCount = 0;
                 }
             }
