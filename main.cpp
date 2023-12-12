@@ -857,9 +857,9 @@ void handleMenuKeypress(unsigned char key, int x, int y) {
     case '2':  // Toggle Sound On/Off
         isSoundOn = !isSoundOn;
         if (isSoundOn) {
-            // Turn on sound (if necessary)
+            isSoundOn = true;
         } else {
-            // Turn off sound (if necessary)
+            isSoundOn = false;
         }
         break;
     case '3':  // Exit Game
@@ -896,7 +896,9 @@ void handleKeypress(unsigned char key, int x, int y) {
             bulletX = playerX;
             bulletY = playerY;
             isBulletActive = true;
-            gunShotSound();
+            if (isSoundOn == true){
+                gunShotSound();
+            }
         }
         break;
     case 'w':
