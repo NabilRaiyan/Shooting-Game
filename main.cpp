@@ -66,12 +66,26 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 // Function to display the game menu
 void gameMenu() {
     glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 181, 255);
+    glVertex2f(-20.0f,20.0f);
+    glVertex2f(20.0f,20.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+
+     // Menu rectangle
+    glBegin(GL_POLYGON);
+    glColor3ub(45, 212, 204);
+    glVertex2f(-6.0f,8.0f);
+    glVertex2f(6.0f,8.0f);
+    glVertex2f(6.0f,-8.0f);
+    glVertex2f(-6.0f,-8.0f);
+    glEnd();
 
     // Draw menu options
-    glColor3ub(255, 255, 255);  // White color for text
 
-    glRasterPos2f(-8.0f, 8.0f);
-    renderBitmapString(-8.0f, 8.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4)");
+    glRasterPos2f(-8.0f, 10.0f);
+    renderBitmapString(-8.0f, 10.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4)");
 
     glRasterPos2f(-3.0f, 5.0f);
     renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. NEW GAME");
@@ -114,22 +128,22 @@ void playerDeathSound(){
     sndPlaySound("playerDeathSound.wav", SND_ASYNC);
 }
 
-// background for level up in between levels
-void levelUpBackground(){
-
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    // screen color
-    glBegin(GL_POLYGON);
-    glColor3ub(0, 0, 0);
-    glVertex2f(-20.0f,20.0f);
-    glVertex2f(20.0f,20.0f);
-    glVertex2f(20.0f,-20.0f);
-    glVertex2f(-20.0f,-20.0f);
-    glEnd();
-
-
-}
+//// background for level up in between levels
+//void levelUpBackground(){
+//
+//    glClear(GL_COLOR_BUFFER_BIT);
+//
+//    // screen color
+//    glBegin(GL_POLYGON);
+//    glColor3ub(0, 0, 0);
+//    glVertex2f(-20.0f,20.0f);
+//    glVertex2f(20.0f,20.0f);
+//    glVertex2f(20.0f,-20.0f);
+//    glVertex2f(-20.0f,-20.0f);
+//    glEnd();
+//
+//
+//}
 
 
 
