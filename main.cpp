@@ -85,7 +85,7 @@ void gameMenu() {
     // Draw menu options
 
     glRasterPos2f(-8.0f, 10.0f);
-    renderBitmapString(-8.0f, 10.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4)");
+    renderBitmapString(-8.0f, 10.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4 or 5)");
 
     glRasterPos2f(-3.0f, 5.0f);
     renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. NEW GAME");
@@ -94,10 +94,13 @@ void gameMenu() {
     renderBitmapString(-3.0f, 2.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. SOUND (On/Off)");
 
     glRasterPos2f(-3.0f, 1.0f);
-    renderBitmapString(-3.0f, -1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "3. EXIT GAME");
+    renderBitmapString(-3.0f, -1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "3. HIGH SCORE");
 
     glRasterPos2f(-3.0f, -1.0f);
     renderBitmapString(-3.0f, -4.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "4. CONTROLS");
+
+    glRasterPos2f(-3.0f, 3.0f);
+    renderBitmapString(-3.0f, -7.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "5. EXIT GAME");
 
     glutSwapBuffers();
 }
@@ -433,7 +436,6 @@ void drawFloor(){
     glVertex2f(20.0f,-20.0f);
     glVertex2f(-20.0f,-20.0f);
     glEnd();
-
 }
 
 // drawing left door
@@ -883,7 +885,7 @@ void display() {
 
 
 
-// Function to handle menu keypress events
+// Function to handle menu key press events
 void handleMenuKeypress(unsigned char key, int x, int y) {
     switch (key) {
     case '1':  // New Game
@@ -898,11 +900,14 @@ void handleMenuKeypress(unsigned char key, int x, int y) {
             isSoundOn = false;
         }
         break;
-    case '3':  // Exit Game
-        exit(0);
+    case '3':
+        // Show high score
         break;
     case '4':  // Controls
         // Implement control instructions display or handling
+        break;
+    case '5':  // Exit Game
+        exit(0);
         break;
     }
     glutPostRedisplay();
