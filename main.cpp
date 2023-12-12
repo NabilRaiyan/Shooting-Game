@@ -767,20 +767,24 @@ void update(int value) {
         }
     }
 
-    for (int i = 0; i < numEnemies; ++i) {
-        enemyX[i] -= enemyMovementSpeed;
-        if (enemyX[i] < -20.0f) {
-            enemyX[i] = 20.0f;
-            enemyY[i] = -11.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+    if (isGameStarted){
+        for (int i = 0; i < numEnemies; ++i) {
+            enemyX[i] -= enemyMovementSpeed;
+            if (enemyX[i] < -20.0f) {
+                enemyX[i] = 20.0f;
+                enemyY[i] = -11.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
 
-            // Increase enemy count
-            enemyCount++;
-            if (enemyCount >= 15) {
-                // Reset the count after 15 enemies
-                enemyCount = 0;
+                // Increase enemy count
+                enemyCount++;
+                if (enemyCount >= 15) {
+                    // Reset the count after 15 enemies
+                    enemyCount = 0;
+                }
             }
-        }
 
+        }
+    }else{
+        gameMenu();
     }
 
 
