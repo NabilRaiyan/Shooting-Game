@@ -50,6 +50,7 @@ std::string nextSemester = "2nd Sem";
 
 
 
+
 const int numEnemies = 1;  // Adjust the number of enemies as needed
 std::vector<float> enemyX(numEnemies, 0.0f);
 std::vector<float> enemyY(numEnemies, 0.0f);
@@ -90,7 +91,7 @@ void gameMenu() {
     renderBitmapString(-8.0f, 10.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4 or 5)");
 
     glRasterPos2f(-3.0f, 5.0f);
-    renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. NEW GAME");
+    renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. START GAME");
 
     glRasterPos2f(-3.0f, 3.0f);
     renderBitmapString(-3.0f, 2.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. SOUND (On/Off)");
@@ -898,6 +899,7 @@ void handleMenuKeypress(unsigned char key, int x, int y) {
     switch (key) {
     case '1':  // New Game
         isGameStarted = true;
+        showGameMenu = false;
         glutDisplayFunc(display);
         break;
     case '2':  // Toggle Sound On/Off
@@ -967,6 +969,7 @@ void handleKeypress(unsigned char key, int x, int y) {
             if (showGameMenu){
                 handleMenuKeypress(key, x, y);
                 //glutPostRedisplay();
+
             }
             break;
         }
