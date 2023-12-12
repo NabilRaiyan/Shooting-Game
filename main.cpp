@@ -218,10 +218,7 @@ void checkPlayerCollision() {
                     //exit(0);  // Exit the game or handle game over state as needed
                 }
             }
-            else if (enemyX[i] > -20.0f && enemyX[i] < -19.0f){
-                playerHealth--;
 
-            }
         }
     }
     else{
@@ -797,12 +794,13 @@ void update(int value) {
         }
     }
 
+    // enemy movement
     if (isGameStarted && showGameMenu == false){
         for (int i = 0; i < numEnemies; ++i) {
             enemyX[i] -= enemyMovementSpeed;
             if (enemyX[i] < -20.0f) {
                 enemyX[i] = 20.0f;
-                enemyY[i] = -11.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
+                enemyY[i] = -5.0f + static_cast<float>(rand() % 300) / 100.0f;  // Randomize Y position
 
                 // Increase enemy count
                 enemyCount++;
