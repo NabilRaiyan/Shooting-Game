@@ -952,6 +952,11 @@ void handleKeypress(unsigned char key, int x, int y) {
         else{
              playerY -= 0.5f;
         }
+        break;
+    case 'b':
+        glutDestroyWindow(glutGetWindow());
+        gameMenu();
+        break;
     }
     }else{
     // Handle menu-related keypress events
