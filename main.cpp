@@ -70,17 +70,20 @@ void gameMenu() {
     // Draw menu options
     glColor3ub(255, 255, 255);  // White color for text
 
+    glRasterPos2f(-8.0f, 8.0f);
+    renderBitmapString(-8.0f, 8.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "PRESS THE CORRESPONDING KEYS (1 or 2 or 3 or 4)");
+
     glRasterPos2f(-3.0f, 5.0f);
-    renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. New Game");
+    renderBitmapString(-3.0f, 5.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "1. NEW GAME");
 
     glRasterPos2f(-3.0f, 3.0f);
-    renderBitmapString(-3.0f, 3.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. Sound");
+    renderBitmapString(-3.0f, 2.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "2. SOUND (On/Off)");
 
     glRasterPos2f(-3.0f, 1.0f);
-    renderBitmapString(-3.0f, 1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "3. Exit Game");
+    renderBitmapString(-3.0f, -1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "3. EXIT GAME");
 
     glRasterPos2f(-3.0f, -1.0f);
-    renderBitmapString(-3.0f, -1.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "4. Controls");
+    renderBitmapString(-3.0f, -4.0f, 0.0f, GLUT_BITMAP_HELVETICA_18, "4. CONTROLS");
 
     glutSwapBuffers();
 }
