@@ -10,6 +10,8 @@
 #include <cstdlib>
 #define PI 3.1416
 #include <string>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 
@@ -43,20 +45,14 @@ bool isGameStarted = false;
 bool isSoundOn = true;
 
 // game menu
-bool showGameMenu = false;
-
-// Declare a variable to store the target X position for player movement after each level
-float targetPlayerXAfterLevelComplete = 20.0f;
-
-// Declare a variable to control the player movement speed after completing each level
-float playerMoveSpeedAfterLevelComplete = 0.1f;  // Adjust the speed as needed
-
-// Declare a flag to indicate if the player is moving after completing a level
-bool isPlayerMovingAfterLevelComplete = false;
+bool showGameMenu = true;
 
 
 // high score
 int highScore = 0;
+
+// cover page
+bool showDetails = true;
 
 // Course, semester up text
 std::string course = "";
@@ -75,6 +71,83 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
         glutBitmapCharacter(font, *c);
     }
 }
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Cover page
+
+// Function to render a line of text
+void renderBitmapString(const char* string, void* font) {
+    while (*string) {
+        glutBitmapCharacter(font, *string);
+        string++;
+    }
+}
+
+
+// Function to render member information
+void renderMemberInfo(const std::string& line1, const std::string& line2, float x, float y) {
+    glRasterPos2f(x, y);
+    renderBitmapString(line1.c_str(), GLUT_BITMAP_HELVETICA_18);
+    glRasterPos2f(x, y - 2.0f);
+    renderBitmapString(line2.c_str(), GLUT_BITMAP_HELVETICA_18);
+}
+
+// cover page
+void coverPage() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 181, 255);
+    glVertex2f(-20.0f,20.0f);
+    glVertex2f(20.0f,20.0f);
+    glVertex2f(20.0f,-20.0f);
+    glVertex2f(-20.0f,-20.0f);
+    glEnd();
+
+
+    glColor3ub(0,0,0); // Set text color to white
+
+    // Set the projection matrix
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-20.0, 20.0, -20.0, 20.0);
+
+    // Set the modelview matrix
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    // Display the information
+    glRasterPos2f(-8.0f, 18.0f);
+    renderBitmapString(-8.0f, 18.0f, 0.0f, GLUT_BITMAP_TIMES_ROMAN_24, "Course Shooting Game");
+
+    glRasterPos2f(-18.0f, 15.0f);
+    renderBitmapString(-18.0f, 15.0f,0.0f, GLUT_BITMAP_HELVETICA_18, "Members:");
+
+    // Member information
+    renderMemberInfo("Fatima Adon", "Id: 21-45840-3", -15.0f, 13.0f);
+    renderMemberInfo("Asaduzzaman", "Id: 22-47131-1", -15.0f, 9.0f);
+    renderMemberInfo("Shamsul Arefin Hasan", "Id: 21-44556-1", -15.0f, 4.0f);
+    renderMemberInfo("Nazmul Hasan Emon", "Id: 21-45829-3", -15.0f, -1.0f);
+    renderMemberInfo("Md. Raiyan Al Sultan", "Id: 19-41639-3", -15.0f, -6.0f);
+
+    // Supervisor information
+    renderMemberInfo("Supervised by:", "Mahfujur Rahman Sir", -18.0f, -10.0f);
+    renderMemberInfo("Lecturer Department of Computer Science", "American International University-Bangladesh(AIUB)", -18.0f, -14.0f);
+    glutSwapBuffers();
+
+
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+
+    // Set the flag to false after 3 seconds
+    showDetails = false;
+}
+
+
+
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 // Message box to show informations
@@ -884,54 +957,62 @@ void update(int value) {
 
 // Display function
 void display() {
-    if (showGameMenu == true && isGameStarted == false){
-        gameMenu();
+
+    if (showDetails){
+        coverPage();
     }
+
     else{
-        if (isGameStarted) {
-        glClear(GL_COLOR_BUFFER_BIT);
-        background();
+        if (showGameMenu == true && isGameStarted == false){
+            gameMenu();
+        }
+        else{
+            if (isGameStarted) {
+            glClear(GL_COLOR_BUFFER_BIT);
+            background();
 
 
-    if (level == 2){
-        background2();
+        if (level == 2){
+            background2();
+        }
+        else if (level == 3){
+            background3();
+        }
+
+        // Draw player, bullet, and enemies
+        drawPlayer();
+        drawBullet();
+        drawEnemy();
+
+        glColor3ub(255, 255, 255);
+        // Render text and other UI elements
+        renderBitmapString(-0.2f, 12.0f, 0.0f, GLUT_BITMAP_9_BY_15, "Notice Board");
+        glRasterPos2f(-0.2f, 10.0f);
+        std::string scoreText = "Score: " + std::to_string(score);
+        for (char c : scoreText) {
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
+        }
+
+        // writing semester on screen
+        glRasterPos2f(-0.2f, 8.0f);
+        std::string levelText = "Semester: " + std::to_string(level);
+        for (char c : levelText) {
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
+        }
+
+        // Writing player health on screen
+         glRasterPos2f(-0.2f, 6.0f);
+        std::string playerHealthText = "Health: " + std::to_string(playerHealth);
+        for (char c : playerHealthText) {
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
+        }
+
+        }else {
+            // Display the game menu
+            gameMenu();
+        }
     }
-    else if (level == 3){
-        background3();
-    }
 
-    // Draw player, bullet, and enemies
-    drawPlayer();
-    drawBullet();
-    drawEnemy();
-
-    glColor3ub(255, 255, 255);
-    // Render text and other UI elements
-    renderBitmapString(-0.2f, 12.0f, 0.0f, GLUT_BITMAP_9_BY_15, "Notice Board");
-    glRasterPos2f(-0.2f, 10.0f);
-    std::string scoreText = "Score: " + std::to_string(score);
-    for (char c : scoreText) {
-        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
-    }
-
-    // writing semester on screen
-    glRasterPos2f(-0.2f, 8.0f);
-    std::string levelText = "Semester: " + std::to_string(level);
-    for (char c : levelText) {
-        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
-    }
-
-    // Writing player health on screen
-     glRasterPos2f(-0.2f, 6.0f);
-    std::string playerHealthText = "Health: " + std::to_string(playerHealth);
-    for (char c : playerHealthText) {
-        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
-    }
-
-    }else {
-        // Display the game menu
-        gameMenu();
-    }
     }
 
     glutSwapBuffers();
