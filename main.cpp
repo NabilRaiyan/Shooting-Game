@@ -981,7 +981,12 @@ void handleKeypress(unsigned char key, int x, int y) {
             }
             break;
         case 'd':
-            playerX += 0.5f;
+            if (playerY > -11.0f){
+                playerX += 0;
+            }
+            else{
+                playerX += 0.5f;
+            }
             break;
         case 'f':
             if (!isBulletActive) {
@@ -995,6 +1000,7 @@ void handleKeypress(unsigned char key, int x, int y) {
             }
             break;
         case 'w':
+
             playerY += 0.5f;
             break;
         case 's':
