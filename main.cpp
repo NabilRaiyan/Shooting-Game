@@ -42,7 +42,18 @@ float enemyMovementSpeed = 0.2f;
 bool isGameStarted = false;
 bool isSoundOn = true;
 
+// game menu
 bool showGameMenu = false;
+
+// Declare a variable to store the target X position for player movement after each level
+float targetPlayerXAfterLevelComplete = 20.0f;
+
+// Declare a variable to control the player movement speed after completing each level
+float playerMoveSpeedAfterLevelComplete = 0.1f;  // Adjust the speed as needed
+
+// Declare a flag to indicate if the player is moving after completing a level
+bool isPlayerMovingAfterLevelComplete = false;
+
 
 // Course, semester up text
 std::string course = "";
@@ -64,7 +75,6 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 
 
 // Message box to show informations
-// Function to display a pop-up message box
 void showMessage(const char* title, const char* message) {
     MessageBox(NULL, message, title, MB_OK | MB_ICONINFORMATION);
 }
@@ -158,29 +168,30 @@ void checkCollision() {
 
 
 
-    // Increasing level from 1 to 2
+    // Increasing level from 1 to 2 and 2 to 3
      if (score == 2 && level == 1){
-        //Sleep(1000);
-//        // Reset player position
-//        playerX = -18.0f;
-//        playerY = -12.0f;
-        //isGameStarted = false;
         isEnemyActive = false;
         isBulletActive = false;
-        showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester!");
+        showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester! Move forward to go to the next semester.");
         score = 0;
-
         level = 2;
+
+        // Reset player position
+        playerX = -18.0f;
+        playerY = -11.0f;
+
         nextSemester = "3rd Sem";
-        enemyMovementSpeed = 0.3;
+        enemyMovementSpeed = 0.2;
+
+
 
     }
 
     if (score == 5 && level == 2){
-        //Sleep(1000);
-//      // Reset player position
-//      playerX = -18.0f;
-//      playerY = -12.0f;
+
+        // Reset player position
+        playerX = -18.0f;
+        playerY = -11.0f;
 
         isEnemyActive = false;
         isBulletActive = false;
@@ -189,7 +200,15 @@ void checkCollision() {
         score = 0;
         level = 3;
         nextSemester = "4th Sem";
-        enemyMovementSpeed = 0.4;
+        enemyMovementSpeed = 0.3;
+    }
+
+    if (score == 7 && level == 3){
+        isEnemyActive = false;
+        isBulletActive = false;
+        showMessage("Graduation Completed!", "Congrats! You have successfully completed your graduation! Now earn money!");
+        isGameStarted = false;
+        score = 0;
     }
 }
 
@@ -838,6 +857,7 @@ void update(int value) {
     // Calling collision functions
     checkCollision();
     checkPlayerCollision();
+
     glutPostRedisplay();
     glutTimerFunc(5, update, 0);
 }
@@ -999,6 +1019,7 @@ int main(int argc, char** argv) {
     glutTimerFunc(25, update, 0);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     gluOrtho2D(-20.0, 20.0, -20.0, 20.0);
+
 
     // Seed for random number generation
     srand(static_cast<unsigned int>(time(nullptr)));
