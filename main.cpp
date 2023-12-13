@@ -172,7 +172,7 @@ void checkCollision() {
      if (score == 2 && level == 1){
         isEnemyActive = false;
         isBulletActive = false;
-        showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester! Move forward to go to the next semester.");
+        showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester! Press OK to go to the next semester.");
         score = 0;
         level = 2;
 
@@ -182,9 +182,6 @@ void checkCollision() {
 
         nextSemester = "3rd Sem";
         enemyMovementSpeed = 0.2;
-
-
-
     }
 
     if (score == 5 && level == 2){
@@ -247,6 +244,17 @@ void checkPlayerCollision() {
                 if (playerHealth <= 0) {
                         if (isSoundOn == true){
                             playerDeathSound();
+                            showMessage("GAME OVER!", "Player Died!");
+                            isGameStarted = false;
+                            isEnemyActive = false;
+                            isBulletActive = false;
+                            isPlayerMoving = false;
+                            score = 0;
+                            level = 1;
+                            playerHealth = 3;
+                            nextSemester = "2nd Sem";
+                            enemyCount = 0;
+
                         }
                         else{
                             isSoundOn = false;
@@ -843,8 +851,15 @@ void update(int value) {
 
                 // Increase enemy count
                 enemyCount++;
-                if (enemyCount >= 15) {
+                if (enemyCount >= 15 && score < 15) {
                     enemyCount = 0;
+                    showMessage("GAME OVER!", "You did not attend some of your exams.Please attend all the exam to got to the next semester! Press OK to replay the level.");
+
+                    //Reset Player position
+                    playerX = -18.0f;
+                    playerY = -11.0f;
+                    playerHealth = 3;
+                    score = 0;
                 }
             }
 
