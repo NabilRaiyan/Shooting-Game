@@ -38,7 +38,7 @@ int playerHealth = 3;
 
 
 // enemy movement speed
-float enemyMovementSpeed = 0.2f;
+float enemyMovementSpeed = 0.1f;
 
 // Game start
 bool isGameStarted = false;
@@ -245,7 +245,7 @@ void checkCollision() {
 
 
     // Increasing level from 1 to 2 and 2 to 3
-     if (score == 2 && level == 1){
+     if (score == 15 && level == 1){
         isEnemyActive = false;
         isBulletActive = false;
         showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester! Press OK to go to the next semester.");
@@ -261,7 +261,7 @@ void checkCollision() {
         enemyMovementSpeed = 0.2;
     }
 
-    if (score == 5 && level == 2){
+    if (score == 30 && level == 2){
 
         // Reset player position
         playerX = -18.0f;
@@ -277,7 +277,7 @@ void checkCollision() {
         enemyMovementSpeed = 0.3;
     }
 
-    if (score == 7 && level == 3){
+    if (score == 45 && level == 3){
         isEnemyActive = false;
         isBulletActive = false;
         showMessage("Graduation Completed!", "Congrats! You have successfully completed your graduation! Now earn money!");
@@ -1086,14 +1086,14 @@ void handleKeypress(unsigned char key, int x, int y) {
             break;
         case 'w':
 
-            playerY += 0.5f;
+            playerY += 0.8f;
             break;
         case 's':
             if (playerY <= -11.0f){
                 isPlayerMoving = false;
             }
             else{
-                 playerY -= 0.5f;
+                 playerY -= 0.8f;
             }
             break;
         case 'b':
