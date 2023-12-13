@@ -36,7 +36,7 @@ int playerHealth = 3;
 
 
 // enemy movement speed
-float enemyMovementSpeed = 0.1f;
+float enemyMovementSpeed = 0.2f;
 
 // Game start
 bool isGameStarted = false;
@@ -63,6 +63,11 @@ void renderBitmapString(float x, float y, float z, void* font, char* string) {
 }
 
 
+// Message box to show informations
+// Function to display a pop-up message box
+void showMessage(const char* title, const char* message) {
+    MessageBox(NULL, message, title, MB_OK | MB_ICONINFORMATION);
+}
 
 // Function to display the game menu
 void gameMenu() {
@@ -154,22 +159,34 @@ void checkCollision() {
 
 
     // Increasing level from 1 to 2
-     if (score > 10){
+     if (score == 2 && level == 1){
         //Sleep(1000);
 //        // Reset player position
 //        playerX = -18.0f;
 //        playerY = -12.0f;
+        //isGameStarted = false;
+        isEnemyActive = false;
+        isBulletActive = false;
+        showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester!");
+        score = 0;
+
         level = 2;
         nextSemester = "3rd Sem";
         enemyMovementSpeed = 0.3;
 
     }
 
-    if (score > 20){
+    if (score == 5 && level == 2){
         //Sleep(1000);
 //      // Reset player position
 //      playerX = -18.0f;
 //      playerY = -12.0f;
+
+        isEnemyActive = false;
+        isBulletActive = false;
+        showMessage("Semester Completed!", "Congrats! You have successfully completed the 2nd Semester. Welcome to the new semester!");
+
+        score = 0;
         level = 3;
         nextSemester = "4th Sem";
         enemyMovementSpeed = 0.4;
