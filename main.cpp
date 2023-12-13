@@ -55,6 +55,9 @@ float playerMoveSpeedAfterLevelComplete = 0.1f;  // Adjust the speed as needed
 bool isPlayerMovingAfterLevelComplete = false;
 
 
+// high score
+int highScore = 0;
+
 // Course, semester up text
 std::string course = "";
 std::string nextSemester = "2nd Sem";
@@ -175,6 +178,7 @@ void checkCollision() {
         showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester! Press OK to go to the next semester.");
         score = 0;
         level = 2;
+
 
         // Reset player position
         playerX = -18.0f;
@@ -954,10 +958,10 @@ void handleMenuKeypress(unsigned char key, int x, int y) {
         }
         break;
     case '3':
-        // Show high score
+        // highscore
         break;
     case '4':  // Controls
-        // Implement control instructions display or handling
+        showMessage("GAME CONTROLS", "PLAYER MOVEMENT: 'w'-> Up | 'a'-> Left | 's'-> Down | 'd'-> Right | 'f'-> Fire ");
         break;
     case '5':  // Exit Game
         exit(0);
