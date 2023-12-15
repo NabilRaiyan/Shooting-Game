@@ -1,6 +1,6 @@
-# Course Shooter Game
+# Course Shooting Game
 
-Welcome to the University Shooter Game! This C++ project, built with GLUT and OpenGL, is a simple shooting game that introduces a unique concept where players represent university students shooting down courses as enemies. Have fun while honing your shooting skills and dodging tricky courses!
+Welcome to the Course Shooter Game! This C++ project, built with GLUT and OpenGL, is a simple shooting game that introduces a unique concept where players represent university students shooting down courses as enemies. Have fun while honing your shooting skills and dodging tricky courses!
 
 ## Table of Contents
 - [Features](#features)
