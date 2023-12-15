@@ -29,6 +29,9 @@ Make sure you have the following installed on your machine:
 - OpenGL
 - GLUT library
 
+## Navigate to the project directory:
+
+
 ### Installation
 
 1. Clone the repository:
