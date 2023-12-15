@@ -29,9 +29,6 @@ Make sure you have the following installed on your machine:
 - OpenGL
 - GLUT library
 
-## Navigate to the project directory:
-
-
 ### Installation
 
 1. Clone the repository:
@@ -40,5 +37,4 @@ Make sure you have the following installed on your machine:
    git clone https://github.com/your-username/university-shooter.git
 
 
-## Compile the source code:
 
