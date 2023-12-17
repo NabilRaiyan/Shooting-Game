@@ -34,7 +34,7 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   [git clone https://github.com/your-username/university-shooter.git](https://github.com/NabilRaiyan/Shooting-Game.git)
+   https://github.com/NabilRaiyan/Shooting-Game
 
 ## Controls: 
 ### Movements:
