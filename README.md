@@ -44,4 +44,11 @@ Make sure you have the following installed on your machine:
   D: Move Right
 
 
+### Gameplay:
+
+1. Players navigate through a 2D environment representing university life.
+2. Enemies (courses) randomly generate and move horizontally along the x-axis.
+3. Players aim to shoot down enemies to score points.
+
+
 
