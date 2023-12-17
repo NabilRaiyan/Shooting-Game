@@ -38,10 +38,10 @@ Make sure you have the following installed on your machine:
 
 ## Controls: 
 ### Movements:
-  W: Move Up
-  A: Move Left
-  S: Move Down
-  D: Move Right
+  #### W: Move Up
+  #### A: Move Left
+  #### S: Move Down
+  #### D: Move Right
 
 
 ### Gameplay:
