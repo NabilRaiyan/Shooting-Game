@@ -50,5 +50,10 @@ Make sure you have the following installed on your machine:
 2. Enemies (courses) randomly generate and move horizontally along the x-axis.
 3. Players aim to shoot down enemies to score points and once all the enemies have been shooter player can go to the next semester.
 
+### Dependencies
+1. C++ Compiler
+2. OpenGL
+3. GLUT (OpenGL Utility Toolkit)
+
 
 
