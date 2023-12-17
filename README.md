@@ -48,7 +48,7 @@ Make sure you have the following installed on your machine:
 
 1. Players navigate through a 2D environment representing a university corridor.
 2. Enemies (courses) randomly generate and move horizontally along the x-axis.
-3. Players aim to shoot down enemies to score points.
+3. Players aim to shoot down enemies to score points and once all the enemies have been shooter player can go to the next semester.
 
 
 
