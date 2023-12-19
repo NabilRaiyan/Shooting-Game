@@ -42,6 +42,7 @@ Make sure you have the following installed on your machine:
    - Use W, A, S, D to move the player.
    - Press F to shoot enemies.
 4. Scoring:
+   - Score points by shooting down enemies.
 
 ## Controls: 
 ### Movements:
