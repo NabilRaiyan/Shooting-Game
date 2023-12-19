@@ -9,8 +9,8 @@ Welcome to the Course Shooting Game! This C++ project, built with GLUT and OpenG
   - [Installation](#installation)
 - [Controls](#controls)
 - [Gameplay](#gameplay)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contributing](#Dependencies)
+
 
 ## Features
 
