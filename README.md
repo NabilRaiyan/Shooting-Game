@@ -37,6 +37,7 @@ Make sure you have the following installed on your machine:
    https://github.com/NabilRaiyan/Shooting-Game
 
 2. Compile and Run
+   - Ensure you have a C++ compiler installed on your system
 
 ## Controls: 
 ### Movements:
