@@ -43,6 +43,7 @@ Make sure you have the following installed on your machine:
    - Press F to shoot enemies.
 4. Scoring:
    - Score points by shooting down enemies.
+   - Challenge yourself to achieve the highest score!
 
 ## Controls: 
 ### Movements:
