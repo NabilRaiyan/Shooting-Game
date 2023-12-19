@@ -40,6 +40,7 @@ Make sure you have the following installed on your machine:
    - Ensure you have a C++ compiler installed on your system
 3. Game Controls:
    - Use W, A, S, D to move the player.
+   - Press F to shoot enemies.
 
 ## Controls: 
 ### Movements:
