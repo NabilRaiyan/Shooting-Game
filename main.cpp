@@ -304,7 +304,7 @@ void checkPlayerCollision() {
                     isSoundOn = false;
                 }
 
-                playerHealth--;  // Reduce player health
+                playerHealth--;  // Reduce player health after collision with enemy
                 std::cout << "Player Health: " << playerHealth << std::endl;
 
                 // Reset player position after collision with enemy
