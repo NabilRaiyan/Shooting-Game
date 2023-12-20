@@ -125,11 +125,11 @@ void coverPage() {
     renderBitmapString(-18.0f, 15.0f,0.0f, GLUT_BITMAP_HELVETICA_18, "Members:");
 
     // Member information
-    renderMemberInfo("Fatima Adon", "Id: 21-45840-3", -15.0f, 13.0f);
-    renderMemberInfo("Asaduzzaman", "Id: 22-47131-1", -15.0f, 9.0f);
-    renderMemberInfo("Shamsul Arefin Hasan", "Id: 21-44556-1", -15.0f, 4.0f);
-    renderMemberInfo("Nazmul Hasan Emon", "Id: 21-45829-3", -15.0f, -1.0f);
-    renderMemberInfo("Md. Raiyan Al Sultan", "Id: 19-41639-3", -15.0f, -6.0f);
+    renderMemberInfo("Fatima Adon", "Id: 21-45840-3 | Contribution: 20%", -15.0f, 13.0f);
+    renderMemberInfo("Asaduzzaman", "Id: 22-47131-1 | Contribution: 15%", -15.0f, 9.0f);
+    renderMemberInfo("Shamsul Arefin Hasan", "Id: 21-44556-1 | Contribution: 15%", -15.0f, 4.0f);
+    renderMemberInfo("Nazmul Hasan Emon", "Id: 21-45829-3 | Contribution: 23%", -15.0f, -1.0f);
+    renderMemberInfo("Md. Raiyan Al Sultan", "Id: 19-41639-3 | Contribution: 27%", -15.0f, -6.0f);
 
     // Supervisor information
     renderMemberInfo("Supervised by:", "Mahfujur Rahman Sir", -18.0f, -10.0f);
@@ -137,9 +137,9 @@ void coverPage() {
     glutSwapBuffers();
 
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 
-    // Set the flag to false after 3 seconds
+    // Set the flag to false after 5 seconds
     showDetails = false;
 }
 
@@ -245,7 +245,7 @@ void checkCollision() {
 
 
     // Increasing level from 1 to 2 and 2 to 3
-     if (score == 2 && level == 1){
+     if (score == 5 && level == 1){
         isEnemyActive = false;
         isBulletActive = false;
         showMessage("Semester Completed!", "Congrats! You have successfully completed the 1st Semester. Welcome to the new semester! Press OK to go to the next semester.");
@@ -261,7 +261,7 @@ void checkCollision() {
         enemyMovementSpeed = 0.2;
     }
 
-    if (score == 5 && level == 2){
+    if (score == 10 && level == 2){
 
         // Reset player position
         playerX = -18.0f;
@@ -277,7 +277,7 @@ void checkCollision() {
         enemyMovementSpeed = 0.3;
     }
 
-    if (score == 7 && level == 3){
+    if (score == 15 && level == 3){
         isEnemyActive = false;
         isBulletActive = false;
         showMessage("Graduation Completed!", "Congrats! You have successfully completed your graduation! Now earn money!");
@@ -350,7 +350,7 @@ void checkPlayerCollision() {
     }
 }
 
-// Level up sign
+// Level up sign image
 void levelUpSign(){
     glBegin(GL_POLYGON);
     glColor3ub(7, 48, 47);
