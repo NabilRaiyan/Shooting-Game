@@ -474,7 +474,7 @@ void drawFireBox(){
 // Creating dustbin
 
 void drawDustbin(){
-    //dustbin trinagle
+    //dustbin triangle
     glBegin(GL_POLYGON);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex2f(-3.0f,0.0f);
