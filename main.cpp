@@ -513,7 +513,7 @@ void drawWall(float r, float g, float b){
     glVertex2f(-20.0f,-20.0f);
     glEnd();
 
-    // Back to the menu option
+    // Back to the menu option key
     glRasterPos2f(-18.0f, 18.0f);
     glColor3ub(0, 0, 0);
     renderBitmapString(-19.0f, 18.0f, 0.0f, GLUT_BITMAP_HELVETICA_12, "Press b key to go back to the menu");
