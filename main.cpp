@@ -244,7 +244,7 @@ void checkCollision() {
 
 
 
-    // Increasing level from 1 to 2 and 2 to 3
+    // Increasing level after completing one level
      if (score == 5 && level == 1){
         isEnemyActive = false;
         isBulletActive = false;
