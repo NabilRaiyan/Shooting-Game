@@ -307,7 +307,7 @@ void checkPlayerCollision() {
                 playerHealth--;  // Reduce player health
                 std::cout << "Player Health: " << playerHealth << std::endl;
 
-                // Reset player position after collision
+                // Reset player position after collision with enemy
                 playerX = -18.0f;
                 playerY = -11.0f;
 
