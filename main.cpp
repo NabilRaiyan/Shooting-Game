@@ -492,7 +492,7 @@ void drawDustbin(){
     glVertex2f(-3.0f,-10.0f);
     glEnd();
 
-    //dustbin midlle rectangle
+    //dustbin middle rectangle
     glBegin(GL_POLYGON);
     glColor3ub(256, 256, 256);
     glVertex2f(-2.0f,-2.0f);
