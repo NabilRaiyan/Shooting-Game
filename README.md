@@ -12,6 +12,7 @@ Welcome to the Course Shooting Game! This C++ project, built with GLUT and OpenG
 - [Dependencies](#dependencies)
 
 
+
 ## Features
 
 - **Player Movement:** Use `W`, `A`, `S`, and `D` keys to move up, left, down, and right respectively.
@@ -39,7 +40,7 @@ Make sure you have the following installed on your machine:
 2. Compile and Run
    - Ensure you have a C++ compiler installed on your system
 3. Game Controls:
-   - Use W, A, S, D to move the player.
+   - Use W, A, S, and D to move the player.
    - Press F to shoot enemies.
 4. Scoring:
    - Score points by shooting down enemies.
