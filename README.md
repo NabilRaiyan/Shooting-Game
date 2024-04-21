@@ -52,7 +52,6 @@ Make sure you have the following installed on your machine:
   - S: Move Down
   - D: Move Right
 
-
 ### Gameplay:
 
 1. Players navigate through a 2D environment representing a university corridor.
